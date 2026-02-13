@@ -56,6 +56,8 @@ The initial hyperparamaters used were DecisionTreeClassifier(
     random_state=42) 
 ### <img width="346" height="665" alt="d_tree classificaiton report before tuning" src="https://github.com/user-attachments/assets/a16a7f84-0465-4e80-b807-0ea977542b8f" />
 
+
+#### Decision Trees after RandomizedSearchCV  
 Even after tuning, it is highly sensitive to outliers, resulting in the model being overly aggressive in detecting fraud. Due the model’s overagression, it was decided to not investigate its financial impact because the model was clearly not usable in a real world scenario
 ### Random Forest
 Initial performance: precision 0.82, recall 0.64, F1 0.72, PR AUC 0.76
