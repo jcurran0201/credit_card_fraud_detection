@@ -55,9 +55,10 @@ The initial hyperparamaters used were DecisionTreeClassifier(
     class_weight='balanced',
     random_state=42) 
 ### <img width="346" height="665" alt="d_tree classificaiton report before tuning" src="https://github.com/user-attachments/assets/a16a7f84-0465-4e80-b807-0ea977542b8f" />
-### <img width="1137" height="466" alt="Screenshot 2026-02-13 at 2 05 52 PM" src="https://github.com/user-attachments/assets/1f23734d-61c5-4b1b-ba92-758d77e571fc" /> 
-### <img width="1280" height="832" alt="Screenshot 2026-02-13 at 3 58 30 PM" src="https://github.com/user-attachments/assets/c5cb55b0-6b96-4e05-a7f8-fe0b7f9efd25" />
+### <img width="1137" height="466" alt="Screenshot 2026-02-13 at 2 05 52 PM" src="https://github.com/user-attachments/assets/1f23734d-61c5-4b1b-ba92-758d77e571fc" />  
+### <img width="1280" height="832" alt="Screenshot 2026-02-13 at 2 07 43 PM" src="https://github.com/user-attachments/assets/c1085ecd-ceb5-4d81-ac57-cb0fb2b7ae5f" />
 
+### <img width="758" height="568" alt="Screenshot 2026-02-13 at 4 00 11 PM" src="https://github.com/user-attachments/assets/d07e38f3-20b9-4218-a635-6a824b92f933" />
 ### <img width="965" height="630" alt="Screenshot 2026-02-13 at 2 07 02 PM" src="https://github.com/user-attachments/assets/db8a7d87-b180-4854-a2ff-dd6dcc886a1c" />
 
 #### Decision Trees after RandomizedSearchCV  
