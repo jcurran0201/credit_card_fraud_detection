@@ -71,7 +71,7 @@ Even after tuning, it is highly sensitive to outliers, resulting in the model be
 
 ### Random Forest
 Initial performance: precision 0.82, recall 0.64, F1 0.72, PR AUC 0.76 
-### <img width="1280" height="832" alt="Screenshot 2026-02-13 at 2 25 57 PM" src="https://github.com/user-attachments/assets/b88d014f-da7d-4567-8b60-2b0debd0ce56" />
+### <img width="524" height="666" alt="Screenshot 2026-02-13 at 4 09 53 PM" src="https://github.com/user-attachments/assets/bba1aac4-9ae9-47ed-9695-0198f6f061c6" />
 ### <img width="469" height="576" alt="Screenshot 2026-02-13 at 2 26 31 PM" src="https://github.com/user-attachments/assets/3cf8415e-37aa-4dba-97bd-41155b172ae2" />
 ### <img width="714" height="479" alt="Screenshot 2026-02-13 at 3 32 17 PM" src="https://github.com/user-attachments/assets/ab6e613d-abbe-4862-913f-8a1f68ce9894" />
 After RandomizedSearchCV: slight F1 decrease to 0.68, but recall and PR AUC improved
