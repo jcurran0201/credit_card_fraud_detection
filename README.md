@@ -84,7 +84,17 @@ Better than Decision Trees due to using a much wider range of features than deci
 
 ### XGBoost
 Initial performance: precision 0.65, recall 0.78, F1 0.71, PR AUC ~0.80
-After RandomizedSearchCV: slight increase in precision, minor drop in recall, F1 unchanged, PR AUC dropped by 0.0075 
+  
+### <img width="531" height="641" alt="Screenshot 2026-02-13 at 2 35 18 PM" src="https://github.com/user-attachments/assets/86431cc1-d53f-47d2-8587-6c4721f17247" />
+### <img width="509" height="330" alt="Screenshot 2026-02-13 at 2 36 17 PM" src="https://github.com/user-attachments/assets/56e050d5-fa62-4d42-9b76-6b14c1967c3c" />
+### <img width="421" height="578" alt="Screenshot 2026-02-13 at 2 37 46 PM" src="https://github.com/user-attachments/assets/aa5579c5-94fd-4b0b-aac6-c1a4aa912e36" /> 
+### <img width="695" height="440" alt="Screenshot 2026-02-13 at 4 06 44 PM" src="https://github.com/user-attachments/assets/cebc06b8-0842-4b68-bf7f-b745297a7405" />
+After RandomizedSearchCV: slight increase in precision, minor drop in recall, F1 unchanged, PR AUC dropped by 0.0075
+### <img width="1280" height="832" alt="Screenshot 2026-02-13 at 2 38 31 PM" src="https://github.com/user-attachments/assets/d32e3cfa-8abd-45b9-b75d-4096ff3f90af" />
+### <img width="367" height="284" alt="Screenshot 2026-02-13 at 2 41 04 PM" src="https://github.com/user-attachments/assets/01ccd333-4007-4352-8820-d8867772a0d5" /> 
+### <img width="397" height="338" alt="Screenshot 2026-02-13 at 2 41 47 PM" src="https://github.com/user-attachments/assets/e260b9c5-0f73-444a-8588-b4f0358c11af" />
+### <img width="626" height="377" alt="Screenshot 2026-02-13 at 2 40 29 PM" src="https://github.com/user-attachments/assets/0ba8d8ad-f288-4cdd-a9ff-949b33cf7f4b" />
+
 Probability threshold raised to 0.94 before RandomizedSearchCV the 0.95 after the RandomizedSearchCV to balance precision and recall
 Strongest model overall due to effective integration of behavioral, temporal, and demographic features
 ### Insights
