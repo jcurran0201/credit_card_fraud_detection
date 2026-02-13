@@ -28,7 +28,7 @@ Cards with multiple fraudulent transactions generally resulted in higher total l
 Certain merchants (e.g., Kuhic LLC, Kozey-Boehm, Boyer PLC, Terry-Huel) appeared frequently in the top fraudulent spend categories
 ### <img width="1007" height="573" alt="Most fraud transactions by store" src="https://github.com/user-attachments/assets/54e986f2-1d13-428d-b3fc-17d1a399ed55" />
 ### <img width="666" height="581" alt="Stores that lost most money in fraud" src="https://github.com/user-attachments/assets/b9dd9b23-5c99-4f32-987d-854d53571b1f" />
-
+The following merchants appear in most fraud transactions by store and most money lost by store : Kozey-Boehm, Kuhic LLC, Terry-Huel, and Boyer PLC
 
 ## Machine Learning Approach
 ### Features Used
