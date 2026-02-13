@@ -80,7 +80,7 @@ Better than Decision Trees due to using a much wider range of features than deci
 ### <img width="533" height="430" alt="Screenshot 2026-02-13 at 2 28 49 PM" src="https://github.com/user-attachments/assets/92379a77-d17e-40b8-8b96-5b0b718807fb" />
 
 ### <img width="708" height="569" alt="Screenshot 2026-02-13 at 2 29 15 PM" src="https://github.com/user-attachments/assets/8c0ffb5d-8ce7-4a5d-ada9-7a294189bc3e" />
-### <img width="1280" height="832" alt="Screenshot 2026-02-13 at 2 28 35 PM" src="https://github.com/user-attachments/assets/80c1653c-afdf-42fd-9060-a73168b4aed8" />
+### <img width="1016" height="617" alt="Screenshot 2026-02-13 at 4 04 17 PM" src="https://github.com/user-attachments/assets/b913ce5a-2be2-4db9-a4cd-f24615850315" />
 
 ### XGBoost
 Initial performance: precision 0.65, recall 0.78, F1 0.71, PR AUC ~0.80
