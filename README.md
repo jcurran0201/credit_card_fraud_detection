@@ -19,7 +19,7 @@ Fraud transactions were mostly under $500
 Fraud victims tended to be slightly older, but age was not a strong predictor 
 ### <img width="371" height="472" alt="Age" src="https://github.com/user-attachments/assets/30dbdff6-51d9-4372-a4b1-a5e741f32711" />
 
-Most merchants had relatively small fraud amounts, with a few outliers exceeding $10,000 
+As merchants have more fraud transactions, the amount of money lost to fraud at the store tends to increase, especially after 20 fraud transactions.
 ### <img width="865" height="585" alt="Fraud Frequency by store" src="https://github.com/user-attachments/assets/373a53e1-6d71-44a1-95df-45bdb6749216" />
 
 Cards with multiple fraudulent transactions generally resulted in higher total losses 
