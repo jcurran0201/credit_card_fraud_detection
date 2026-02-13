@@ -58,12 +58,13 @@ The initial hyperparamaters used were DecisionTreeClassifier(
 ### <img width="1137" height="466" alt="Screenshot 2026-02-13 at 2 05 52 PM" src="https://github.com/user-attachments/assets/1f23734d-61c5-4b1b-ba92-758d77e571fc" />
 ### <img width="1280" height="832" alt="Screenshot 2026-02-13 at 2 07 43 PM" src="https://github.com/user-attachments/assets/0c195642-a4f3-48c5-af3b-ace7696b0463" />
 ### <img width="965" height="630" alt="Screenshot 2026-02-13 at 2 07 02 PM" src="https://github.com/user-attachments/assets/db8a7d87-b180-4854-a2ff-dd6dcc886a1c" />
+### <img width="655" height="485" alt="Screenshot 2026-02-13 at 2 13 56 PM" src="https://github.com/user-attachments/assets/644210ba-5078-47df-9f81-d7e23ea1cbc6" />
 
 #### Decision Trees after RandomizedSearchCV  
 Even after tuning, it is highly sensitive to outliers, resulting in the model being overly aggressive in detecting fraud. Due the model’s overagression, it was decided to not investigate its financial impact because the model was clearly not usable in a real world scenario 
 ### <img width="385" height="673" alt="Screenshot 2026-02-13 at 2 11 01 PM" src="https://github.com/user-attachments/assets/202ceddb-317b-4b3f-9479-f8c3b5e67c1f" />
 ### <img width="1280" height="494" alt="Screenshot 2026-02-13 at 2 11 53 PM" src="https://github.com/user-attachments/assets/0a470040-e15b-4a01-a440-9d95468a9f22" />
-### <img width="719" height="572" alt="Screenshot 2026-02-13 at 2 24 41 PM" src="https://github.com/user-attachments/assets/1bc7901d-fc44-4def-912d-8f4cfd5caff2" /> 
+### 
 ### <img width="655" height="485" alt="Screenshot 2026-02-13 at 2 13 56 PM" src="https://github.com/user-attachments/assets/1e166292-2bce-4000-b93e-7e672a10735c" /> 
 ### <img width="971" height="665" alt="Screenshot 2026-02-13 at 2 12 35 PM" src="https://github.com/user-attachments/assets/e7e022ae-a093-4642-a794-4ca1da9a1d0e" />
 
