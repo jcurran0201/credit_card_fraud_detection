@@ -45,7 +45,7 @@ Better than Decision Trees due to using a much wider range of features than deci
 ### XGBoost
 Initial performance: precision 0.65, recall 0.78, F1 0.71, PR AUC ~0.80
 After RandomizedSearchCV: slight increase in precision, minor drop in recall, F1 unchanged, PR AUC dropped by 0.0075
-Probability threshold raised to 0.94–0.95 to balance precision and recall
+Probability threshold raised to 0.94 before RandomizedSearchCV the 0.95 after the RandomizedSearchCV to balance precision and recall
 Strongest model overall due to effective integration of behavioral, temporal, and demographic features
 ### Insights
 Decision Trees relied heavily on immediate transaction amounts and short-term totals, making them overly aggressive
