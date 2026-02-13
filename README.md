@@ -44,9 +44,18 @@ RandomizedSearchCV was used for efficiency on the large dataset
 Optimization focused on improving PR AUC, precision, recall, and F1 scores while considering computational constraints
 Model Performance
 ### Decision Tree
-#### Baseline model
-Default probability threshold (0.5) led to excessive false positives
-Threshold increased to 0.9 to reduce false positives
+Decision trees were used here as a baseline model to determine which features might be more heavily valued in more competitive models. 
+Default probability threshold (0.5) led to excessive false positives. Threshold increased to 0.9 to reduce false positives 
+#### Decision Trees before RandomizedSearchCV  
+The initial hyperparamaters used were DecisionTreeClassifier(
+    criterion='entropy',
+    max_depth=7,
+    min_samples_leaf=500,
+    min_samples_split=100,
+    class_weight='balanced',
+    random_state=42) 
+### <img width="346" height="665" alt="d_tree classificaiton report before tuning" src="https://github.com/user-attachments/assets/a16a7f84-0465-4e80-b807-0ea977542b8f" />
+
 Even after tuning, it is highly sensitive to outliers, resulting in the model being overly aggressive in detecting fraud. Due the model’s overagression, it was decided to not investigate its financial impact because the model was clearly not usable in a real world scenario
 ### Random Forest
 Initial performance: precision 0.82, recall 0.64, F1 0.72, PR AUC 0.76
