@@ -54,10 +54,16 @@ The initial hyperparamaters used were DecisionTreeClassifier(
     min_samples_split=100,
     class_weight='balanced',
     random_state=42) 
-### <img width="346" height="665" alt="d_tree classificaiton report before tuning" src="https://github.com/user-attachments/assets/a16a7f84-0465-4e80-b807-0ea977542b8f" />
-### <img width="1137" height="466" alt="Screenshot 2026-02-13 at 2 05 52 PM" src="https://github.com/user-attachments/assets/1f23734d-61c5-4b1b-ba92-758d77e571fc" />  
-### <img width="739" height="577" alt="Screenshot 2026-02-13 at 4 02 09 PM" src="https://github.com/user-attachments/assets/d60ba689-5f7b-4fd4-bb44-d3174156a3c8" />
-### <img width="758" height="568" alt="Screenshot 2026-02-13 at 4 00 11 PM" src="https://github.com/user-attachments/assets/d07e38f3-20b9-4218-a635-6a824b92f933" />
+
+In the training set of the decision tree model the precision is 0.35 and the recal is 0.86. In the testing set the percision dropped 0.08 to 0.27 and the recall dropped 0.03 and the f1 score had a 0.1 point decrease. This suggests that the model does not have an overfitting problem.      
+### <img width="346" height="665" alt="d_tree classificaiton report before tuning" src="https://github.com/user-attachments/assets/a16a7f84-0465-4e80-b807-0ea977542b8f" /> 
+The root node in the tree starts with amount spent and as the tree gets deeper, it begins to use more unique features to decipher between fraud and normal transactions. 
+### <img width="1137" height="466" alt="Screenshot 2026-02-13 at 2 05 52 PM" src="https://github.com/user-attachments/assets/1f23734d-61c5-4b1b-ba92-758d77e571fc" />   
+As expected in a heavily imbalanced dataset, a high accuracy score is expected and was achieved with an ROC score of 0.98. The PRC score was significantly lower at 0.69
+### <img width="739" height="577" alt="Screenshot 2026-02-13 at 4 02 09 PM" src="https://github.com/user-attachments/assets/d60ba689-5f7b-4fd4-bb44-d3174156a3c8" /> 
+Primary features that were used in the model: amount spent in the transaction, total amount of money spent of the card in the last 24 hours, if the transaction occured durng off peak hours. Some of the secondary features that were used are the amount of transactions on the card, the time since the last transaction, and age of the card owner.  
+### <img width="758" height="568" alt="Screenshot 2026-02-13 at 4 00 11 PM" src="https://github.com/user-attachments/assets/d07e38f3-20b9-4218-a635-6a824b92f933" /> 
+
 ### <img width="965" height="630" alt="Screenshot 2026-02-13 at 2 07 02 PM" src="https://github.com/user-attachments/assets/db8a7d87-b180-4854-a2ff-dd6dcc886a1c" />
 
 #### Decision Trees after RandomizedSearchCV  
