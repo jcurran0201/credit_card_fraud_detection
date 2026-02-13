@@ -62,18 +62,28 @@ The initial hyperparamaters used were DecisionTreeClassifier(
 #### Decision Trees after RandomizedSearchCV  
 Even after tuning, it is highly sensitive to outliers, resulting in the model being overly aggressive in detecting fraud. Due the model’s overagression, it was decided to not investigate its financial impact because the model was clearly not usable in a real world scenario 
 ### <img width="385" height="673" alt="Screenshot 2026-02-13 at 2 11 01 PM" src="https://github.com/user-attachments/assets/202ceddb-317b-4b3f-9479-f8c3b5e67c1f" />
-### <img width="1280" height="494" alt="Screenshot 2026-02-13 at 2 11 53 PM" src="https://github.com/user-attachments/assets/0a470040-e15b-4a01-a440-9d95468a9f22" />
-### 
-### <img width="655" height="485" alt="Screenshot 2026-02-13 at 2 13 56 PM" src="https://github.com/user-attachments/assets/1e166292-2bce-4000-b93e-7e672a10735c" /> 
-### <img width="971" height="665" alt="Screenshot 2026-02-13 at 2 12 35 PM" src="https://github.com/user-attachments/assets/e7e022ae-a093-4642-a794-4ca1da9a1d0e" />
+### <img width="1280" height="494" alt="Screenshot 2026-02-13 at 2 11 53 PM" src="https://github.com/user-attachments/assets/396555b1-c2db-46af-aecc-a8b0218a0e17" />
+### <img width="719" height="572" alt="Screenshot 2026-02-13 at 2 24 41 PM" src="https://github.com/user-attachments/assets/82cbf537-f960-40d4-9a36-6dc21dfbdbc5" />
+### <img width="655" height="485" alt="Screenshot 2026-02-13 at 2 13 56 PM" src="https://github.com/user-attachments/assets/9226cf9b-4126-4da6-bd22-c4fdea816e87" />
+### <img width="971" height="665" alt="Screenshot 2026-02-13 at 2 12 35 PM" src="https://github.com/user-attachments/assets/45379159-0189-4107-a996-7d3db6a5c3f6" />
+
 
 ### Random Forest
-Initial performance: precision 0.82, recall 0.64, F1 0.72, PR AUC 0.76
+Initial performance: precision 0.82, recall 0.64, F1 0.72, PR AUC 0.76 
+### <img width="1280" height="832" alt="Screenshot 2026-02-13 at 2 25 57 PM" src="https://github.com/user-attachments/assets/b88d014f-da7d-4567-8b60-2b0debd0ce56" />
+### <img width="469" height="576" alt="Screenshot 2026-02-13 at 2 26 31 PM" src="https://github.com/user-attachments/assets/3cf8415e-37aa-4dba-97bd-41155b172ae2" />
+### <img width="714" height="479" alt="Screenshot 2026-02-13 at 3 32 17 PM" src="https://github.com/user-attachments/assets/ab6e613d-abbe-4862-913f-8a1f68ce9894" />
 After RandomizedSearchCV: slight F1 decrease to 0.68, but recall and PR AUC improved
-Better than Decision Trees due to using a much wider range of features than decision trees
+Better than Decision Trees due to using a much wider range of features than decision trees 
+###  <img width="330" height="666" alt="Screenshot 2026-02-13 at 2 27 22 PM" src="https://github.com/user-attachments/assets/0a012e6f-8abb-4898-bce9-3642cb91da22" />
+### <img width="533" height="430" alt="Screenshot 2026-02-13 at 2 28 49 PM" src="https://github.com/user-attachments/assets/92379a77-d17e-40b8-8b96-5b0b718807fb" />
+
+### <img width="708" height="569" alt="Screenshot 2026-02-13 at 2 29 15 PM" src="https://github.com/user-attachments/assets/8c0ffb5d-8ce7-4a5d-ada9-7a294189bc3e" />
+### <img width="1280" height="832" alt="Screenshot 2026-02-13 at 2 28 35 PM" src="https://github.com/user-attachments/assets/80c1653c-afdf-42fd-9060-a73168b4aed8" />
+
 ### XGBoost
 Initial performance: precision 0.65, recall 0.78, F1 0.71, PR AUC ~0.80
-After RandomizedSearchCV: slight increase in precision, minor drop in recall, F1 unchanged, PR AUC dropped by 0.0075
+After RandomizedSearchCV: slight increase in precision, minor drop in recall, F1 unchanged, PR AUC dropped by 0.0075 
 Probability threshold raised to 0.94 before RandomizedSearchCV the 0.95 after the RandomizedSearchCV to balance precision and recall
 Strongest model overall due to effective integration of behavioral, temporal, and demographic features
 ### Insights
