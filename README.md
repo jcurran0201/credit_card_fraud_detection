@@ -16,7 +16,7 @@ Spatial features: Distance between cardholder residence and transaction location
 Fraud transactions were mostly under $500  
 ### <img width="1016" height="626" alt="Money spent in fraud transactions" src="https://github.com/user-attachments/assets/5e212b60-0779-45d8-a69f-bc663bd285df" />
 
-Fraud victims tended to be slightly older, but age was not a strong predictor 
+Fraud victims had a slightly older average age, but it did not indicate that a specific age group is more vulnerable to becoming a victim of fraud
 ### <img width="371" height="472" alt="Age" src="https://github.com/user-attachments/assets/30dbdff6-51d9-4372-a4b1-a5e741f32711" />
 
 As merchants have more fraud transactions, the amount of money lost to fraud at the store tends to increase, especially after 20 fraud transactions.
