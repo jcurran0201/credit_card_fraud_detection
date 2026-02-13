@@ -13,11 +13,21 @@ Temporal features: Weekend and off-peak transactions (10 PM–6 AM) were found a
 Demographic features: Cardholder age at transaction time computed from date of birth and spending habits based on the subject’s job title were used 
 Spatial features: Distance between cardholder residence and transaction location computed with the Haversine formula using latitude/longitude  coordinates provided. 
 ## Exploratory Data Analysis 
-Fraud transactions were mostly under $500 
-Fraud victims tended to be slightly older, but age was not a strong predictor
-Most merchants had relatively small fraud amounts, with a few outliers exceeding $10,000
-Cards with multiple fraudulent transactions generally resulted in higher total losses
+Fraud transactions were mostly under $500  
+### <img width="1016" height="626" alt="Money spent in fraud transactions" src="https://github.com/user-attachments/assets/5e212b60-0779-45d8-a69f-bc663bd285df" />
+
+Fraud victims tended to be slightly older, but age was not a strong predictor 
+### <img width="371" height="472" alt="Age" src="https://github.com/user-attachments/assets/30dbdff6-51d9-4372-a4b1-a5e741f32711" />
+
+Most merchants had relatively small fraud amounts, with a few outliers exceeding $10,000 
+### <img width="865" height="585" alt="Fraud Frequency by store" src="https://github.com/user-attachments/assets/373a53e1-6d71-44a1-95df-45bdb6749216" />
+
+Cards with multiple fraudulent transactions generally resulted in higher total losses 
+### <img width="870" height="546" alt="Screenshot 2026-02-13 at 1 24 32 PM" src="https://github.com/user-attachments/assets/2f7e1f26-4184-4e0e-9a60-85e3ac7b4441" />
+
 Certain merchants (e.g., Kuhic LLC, Kozey-Boehm, Boyer PLC, Terry-Huel) appeared frequently in the top fraudulent spend categories
+### <img width="1007" height="573" alt="Most fraud transactions by store" src="https://github.com/user-attachments/assets/54e986f2-1d13-428d-b3fc-17d1a399ed55" />
+### <img width="666" height="581" alt="Stores that lost most money in fraud" src="https://github.com/user-attachments/assets/b9dd9b23-5c99-4f32-987d-854d53571b1f" />
 
 
 ## Machine Learning Approach
