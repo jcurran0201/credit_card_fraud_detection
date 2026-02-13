@@ -22,7 +22,7 @@ Fraud victims had a slightly older average age, but it did not indicate that a s
 As merchants have more fraud transactions, the amount of money lost to fraud at the store tends to increase, especially after 20 fraud transactions.
 ### <img width="865" height="585" alt="Fraud Frequency by store" src="https://github.com/user-attachments/assets/373a53e1-6d71-44a1-95df-45bdb6749216" />
 
-Cards with multiple fraudulent transactions generally resulted in higher total losses 
+Cards with more fraudulent transactions generally resulted in higher total losses 
 ### <img width="870" height="546" alt="Screenshot 2026-02-13 at 1 24 32 PM" src="https://github.com/user-attachments/assets/2f7e1f26-4184-4e0e-9a60-85e3ac7b4441" />
 
 Certain merchants (e.g., Kuhic LLC, Kozey-Boehm, Boyer PLC, Terry-Huel) appeared frequently in the top fraudulent spend categories
