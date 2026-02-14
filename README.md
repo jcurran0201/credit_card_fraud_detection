@@ -71,8 +71,9 @@ Even after tuning, it is highly sensitive to outliers, resulting in the model be
 
 In the training set of the decision tree model the precision is 0.31 and the recall is 0.87. In the testing set the percision dropped 0.09 to 0.22 and the recall dropped 0.03 to 0.84 and the f1 score had a 0.11 point decrease. This suggests that this decision tree does not have an overfitting problem either. It should be noted that the decision tree model is once agian extremely agressive in calling a transaction fraud.     
 ### <img width="385" height="673" alt="Screenshot 2026-02-13 at 2 11 01 PM" src="https://github.com/user-attachments/assets/202ceddb-317b-4b3f-9479-f8c3b5e67c1f" /> 
-As expected in a heavily imbalanced dataset, a high accuracy score is expected and was achieved with an ROC score of 0.98. The PRC score was significantly lower at 0.64 than the ROC score.
+The root node in the tree starts with amount spent and as the tree gets deeper, it begins to use more unique features to decipher between fraud and normal transactions. 
 ### <img width="1280" height="494" alt="Screenshot 2026-02-13 at 2 11 53 PM" src="https://github.com/user-attachments/assets/396555b1-c2db-46af-aecc-a8b0218a0e17" />
+As expected in a heavily imbalanced dataset, a high accuracy score is expected and was achieved with an ROC score of 0.98. The PRC score was significantly lower at 0.64 than the ROC score.
 ### <img width="719" height="572" alt="Screenshot 2026-02-13 at 2 24 41 PM" src="https://github.com/user-attachments/assets/82cbf537-f960-40d4-9a36-6dc21dfbdbc5" />
 ### <img width="655" height="485" alt="Screenshot 2026-02-13 at 2 13 56 PM" src="https://github.com/user-attachments/assets/9226cf9b-4126-4da6-bd22-c4fdea816e87" />
 ### <img width="971" height="665" alt="Screenshot 2026-02-13 at 2 12 35 PM" src="https://github.com/user-attachments/assets/45379159-0189-4107-a996-7d3db6a5c3f6" />
