@@ -90,8 +90,7 @@ The Randomized Search Random Forest model used a very similar set of features as
 ### <img width="1016" height="617" alt="Screenshot 2026-02-13 at 4 04 17 PM" src="https://github.com/user-attachments/assets/b913ce5a-2be2-4db9-a4cd-f24615850315" />
 
 ### XGBoost
-Initial performance: precision 0.65, recall 0.78, F1 0.71, PR AUC ~0.80
-  
+The initial XGBoost model trained with a precision of 0.79, recall of 0.88, and an f1-score of 0.84 and the test results were 0.65 for precision, 0.78 for recall, and an f1-score of 0.71. It can be concluded that overfitting is not an issue in this model. 
 ### <img width="531" height="641" alt="Screenshot 2026-02-13 at 2 35 18 PM" src="https://github.com/user-attachments/assets/86431cc1-d53f-47d2-8587-6c4721f17247" />
 ### <img width="509" height="330" alt="Screenshot 2026-02-13 at 2 36 17 PM" src="https://github.com/user-attachments/assets/56e050d5-fa62-4d42-9b76-6b14c1967c3c" />
 ### <img width="421" height="578" alt="Screenshot 2026-02-13 at 2 37 46 PM" src="https://github.com/user-attachments/assets/aa5579c5-94fd-4b0b-aac6-c1a4aa912e36" /> 
