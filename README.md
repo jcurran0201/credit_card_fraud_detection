@@ -9,7 +9,7 @@ The Kaggle Fraud Detection dataset is a large, synthetic credit card transaction
   Feature Engineering
 All feature engineering logic was implemented using reusable def() functions to maintain consistency across training and testing datasets.
 Behavioral features: Features about spending habits in specific time frames before the transaction occurred. We created features for spending habits (how many times card was used and how much was spent on the card) an hour before transaction, day before transaction, and a week before the transaction. 
-Temporal features: Weekend and off-peak transactions (10 PM–6 AM) were found and used features. 
+Temporal features: Weekend and off-peak transactions (10 PM–6 AM) were found and used as features. 
 Demographic features: Cardholder age at transaction time computed from date of birth and spending habits based on the subject’s job title were used 
 Spatial features: Distance between cardholder residence and transaction location computed with the Haversine formula using latitude/longitude  coordinates provided. 
 ## Exploratory Data Analysis 
@@ -56,11 +56,11 @@ As expected in a heavily imbalanced dataset, a high accuracy score is expected a
 ### <img width="739" height="577" alt="Screenshot 2026-02-13 at 4 02 09 PM" src="https://github.com/user-attachments/assets/d60ba689-5f7b-4fd4-bb44-d3174156a3c8" /> 
 The PRC score was significantly lower at 0.69 which is expected. The PRC score of the decision trees is expected to be lower than in other tree based models such as Random Forest and XGBoost
 ### <img width="758" height="568" alt="Screenshot 2026-02-13 at 4 00 11 PM" src="https://github.com/user-attachments/assets/d07e38f3-20b9-4218-a635-6a824b92f933" /> 
-Primary features that were used in the model: amount spent in the transaction, total amount of money spent on the card in the last 24 hours, if the transaction occurred during off peak hours. Some of the secondary features that were used are the amount of transactions on the card, the time since the last transaction, and age of the card owner.  
+Primary features that were used in the model: amount spent in the transaction, total amount of money spent on the card in the last 24 hours, if the transaction occurred during off-peak hours. Some of the secondary features that were used are the amount of transactions on the card, the time since the last transaction, and age of the card owner.  
 ### <img width="965" height="630" alt="Screenshot 2026-02-13 at 2 07 02 PM" src="https://github.com/user-attachments/assets/db8a7d87-b180-4854-a2ff-dd6dcc886a1c" />
 
 #### Decision Trees after RandomizedSearchCV  
-Even after tuning, it is highly sensitive to outliers, resulting in the model being overly aggressive in detecting fraud. Due the model’s overagression, it was decided to not investigate its financial impact because the model was clearly not usable in a real world scenario   
+Even after tuning, it is highly sensitive to outliers, resulting in the model being overly aggressive in detecting fraud. Due the model’s overaggression, it was decided to not investigate its financial impact because the model was clearly not usable in a real world scenario   
 
 In the training set of the decision tree model the precision is 0.31 and the recall is 0.87. In the testing set the precision dropped 0.09 to 0.22 and the recall dropped 0.03 to 0.84 and the F1 score had a 0.11 point decrease. This suggests that this decision tree does not have an overfitting problem either. It should be noted that the decision tree model is once again extremely aggressive in calling a transaction fraud.     
 ### <img width="385" height="673" alt="Screenshot 2026-02-13 at 2 11 01 PM" src="https://github.com/user-attachments/assets/202ceddb-317b-4b3f-9479-f8c3b5e67c1f" /> 
@@ -69,12 +69,12 @@ The root node in the tree starts with the amount spent and as the tree gets deep
 As expected in a heavily imbalanced dataset, a high accuracy score is expected and was achieved with an ROC AUC  score of 0.98. The PRC score was significantly lower at 0.64.
 ### <img width="719" height="572" alt="Screenshot 2026-02-13 at 2 24 41 PM" src="https://github.com/user-attachments/assets/82cbf537-f960-40d4-9a36-6dc21dfbdbc5" />
 ### <img width="655" height="485" alt="Screenshot 2026-02-13 at 2 13 56 PM" src="https://github.com/user-attachments/assets/9226cf9b-4126-4da6-bd22-c4fdea816e87" /> 
-The primary features used in this decision tree model are amount spent in the transaction, the total amount of money spent on the card in the last 24 hours, if the transaction occurred in an off peak hour. The secondary features in this decision tree are how much the cards have been used in specific time frames, age of the card owner, the time that has passed since the card was last used, and the income_proxy feature which is a proxy for spending habits based on the card owner's card.   
+The primary features used in this decision tree model are amount spent in the transaction, the total amount of money spent on the card in the last 24 hours, if the transaction occurred in an off-peak hour. The secondary features in this decision tree are how much the cards have been used in specific time frames, age of the card owner, the time that has passed since the card was last used, and the income_proxy feature, a proxy for spending habits based on the card owner’s information.   
 ### <img width="971" height="665" alt="Screenshot 2026-02-13 at 2 12 35 PM" src="https://github.com/user-attachments/assets/45379159-0189-4107-a996-7d3db6a5c3f6" />
 
 
 ### Random Forest
-The training set had a precision 0.91, a recall of 0.69, and an F1 score of 0.78. On the testing set the precision dropped 0.09 points to 0.82 and recall dropped 0.05 points to 0.64 and the F1 score was 0.72. This model is a significant improvement from the use of decision trees. Despite the model not having as high of a recall score as the decision trees, its precision is much improved and the balance between percision and recall is much better than being extremely aggressive in declaring fraud and marking an excessive amount of non-fraud transactions fraud. 
+The training set had a precision 0.91, a recall of 0.69, and an F1 score of 0.78. On the testing set the precision dropped 0.09 points to 0.82 and recall dropped 0.05 points to 0.64 and the F1 score was 0.72. This model is a significant improvement from the use of decision trees. Despite the model not having as high of a recall score as the decision trees, its precision is much improved and the balance between precision and recall is much better than being extremely aggressive in declaring fraud and marking an excessive amount of non-fraud transactions fraud. 
 ### <img width="524" height="666" alt="Screenshot 2026-02-13 at 4 09 53 PM" src="https://github.com/user-attachments/assets/bba1aac4-9ae9-47ed-9695-0198f6f061c6" /> 
 The ROC AUC is 0.99, which is expected in each model used on this dataset because of the extreme class imbalance in the dataset. The PRC curve result was 0.76, which is a significant improvement from the PRC results in decision trees.
 ### <img width="469" height="576" alt="Screenshot 2026-02-13 at 2 26 31 PM" src="https://github.com/user-attachments/assets/3cf8415e-37aa-4dba-97bd-41155b172ae2" /> 
@@ -100,9 +100,9 @@ XGBoost used a couple more features than Random Forest did, which likely helped 
 ### <img width="695" height="440" alt="Screenshot 2026-02-13 at 4 06 44 PM" src="https://github.com/user-attachments/assets/cebc06b8-0842-4b68-bf7f-b745297a7405" />
 After RandomizedSearchCV: slight increase in precision, minor drop in recall, F1 unchanged, PRC dropped very slightly. 
 ### <img width="372" height="665" alt="Screenshot 2026-02-13 at 4 14 42 PM" src="https://github.com/user-attachments/assets/6e911f95-c9db-4814-a77e-42f3be8f8901" /> 
-ROC AUC  curve continues to show scores in the 0.99 range
+ROC AUC  curve continues to show scores in the 0.99 range.
 ### <img width="367" height="284" alt="Screenshot 2026-02-13 at 2 41 04 PM" src="https://github.com/user-attachments/assets/01ccd333-4007-4352-8820-d8867772a0d5" />  
-PRC came in around 0.795, which is nearly the same as the initial model
+PRC came in around 0.795, which is nearly the same as the initial model.
 ### <img width="397" height="338" alt="Screenshot 2026-02-13 at 2 41 47 PM" src="https://github.com/user-attachments/assets/e260b9c5-0f73-444a-8588-b4f0358c11af" /> 
 The new hyperparameters use the same amount of features that the initial XGBoost model did with some of the lesser features being weighted slightly more than others. 
 ### <img width="626" height="377" alt="Screenshot 2026-02-13 at 2 40 29 PM" src="https://github.com/user-attachments/assets/0ba8d8ad-f288-4cdd-a9ff-949b33cf7f4b" />
@@ -111,7 +111,7 @@ The new hyperparameters use the same amount of features that the initial XGBoost
 Decision Trees relied heavily on immediate transaction amounts and short-term totals, making them overly aggressive
 Random Forest and XGBoost incorporated broader context: time of day, cardholder age, and transaction history over several days/weeks
 Precision-recall tradeoff is critical: adjusting thresholds and tuning hyperparameters is essential for production-ready fraud detection models 
-Among the evaluated models, the Random Forest after RandomizedSearchCV was the most effective at maximizing fraud loss prevention, as it recovered the highest dollar value of fraudulent transactions (~$1.00M) and reduced missed fraud at the lowest value (~131K). This indicates the strongest detection capability and the greatest direct financial protection. However, this improvement came with a substantial increase in legitimate transactions being flagged incorrectly (~384K) that review burden will be higher and customers might be more frustrated. By comparison, the tuned XGBoost model produced fewer false positives than the Random Forest, but it allowed more fraud to go undetected and recovered less total fraud in monetary value. If the primary objective is minimizing financial loss from fraud the tuned Random Forest is the most effective model. If the goal is a more balanced tradeoff between fraud prevention and customer experience, the tune XGBoost model might be preferable 
+Among the evaluated models, the Random Forest after RandomizedSearchCV was the most effective at maximizing fraud loss prevention, as it recovered the highest dollar value of fraudulent transactions (~$1.00M) and reduced missed fraud at the lowest value (~131K). This indicates the strongest detection capability and the greatest direct financial protection. However, this improvement came with a substantial increase in legitimate transactions being flagged incorrectly (~384K) that review burden will be higher and customers might be more frustrated. By comparison, the tuned XGBoost model produced fewer false positives than the Random Forest, but it allowed more fraud to go undetected and recovered less total fraud in monetary value. If the primary objective is minimizing financial loss from fraud the tuned Random Forest is the most effective model. If the goal is a more balanced tradeoff between fraud prevention and customer experience, the tuned XGBoost model might be preferable 
 
 ### Areas of Improvement 
 One area for improvement in this project would be to make the machine learning model code easier to read by organizing it into reusable def() functions, similar to how functions were used earlier in the project. Functions could have been created to efficiently generate ROC AUC and precision–recall curves, feature importance visualizations, and confusion matrices, which would improve both readability and reproducibility.
