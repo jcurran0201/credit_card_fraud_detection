@@ -75,7 +75,8 @@ The root node in the tree starts with amount spent and as the tree gets deeper, 
 ### <img width="1280" height="494" alt="Screenshot 2026-02-13 at 2 11 53 PM" src="https://github.com/user-attachments/assets/396555b1-c2db-46af-aecc-a8b0218a0e17" />
 As expected in a heavily imbalanced dataset, a high accuracy score is expected and was achieved with an ROC score of 0.98. The PRC score was significantly lower at 0.64 than the ROC score.
 ### <img width="719" height="572" alt="Screenshot 2026-02-13 at 2 24 41 PM" src="https://github.com/user-attachments/assets/82cbf537-f960-40d4-9a36-6dc21dfbdbc5" />
-### <img width="655" height="485" alt="Screenshot 2026-02-13 at 2 13 56 PM" src="https://github.com/user-attachments/assets/9226cf9b-4126-4da6-bd22-c4fdea816e87" />
+### <img width="655" height="485" alt="Screenshot 2026-02-13 at 2 13 56 PM" src="https://github.com/user-attachments/assets/9226cf9b-4126-4da6-bd22-c4fdea816e87" /> 
+The primary features used in this decsion tree model are amount spent in the transaction, the total amount of money spend on the card in the last 24 hours, if the transaction occurred in an off peak hour. The secondary features in this decision tree are how much the cards have been used in specific time frames, age of the card owner, and the time that has passed since the card was last used.   
 ### <img width="971" height="665" alt="Screenshot 2026-02-13 at 2 12 35 PM" src="https://github.com/user-attachments/assets/45379159-0189-4107-a996-7d3db6a5c3f6" />
 
 
