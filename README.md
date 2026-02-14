@@ -80,12 +80,13 @@ The training set had a precision 0.91, a recall of 0.69, and an f1 score of 0.78
 ### <img width="469" height="576" alt="Screenshot 2026-02-13 at 2 26 31 PM" src="https://github.com/user-attachments/assets/3cf8415e-37aa-4dba-97bd-41155b172ae2" /> 
 It can be noted that Random Forest uses significantly more fetures to determine fraudulent behavior than the decision trees. The primary features in the Random Forest model are amount spent in the transaction, money spend on the card in the last 24 hours, did the transaction occur at nighttime (10PM-6AM), card activity in the last week, the unique merchants the card was used at, average amount spent on the card, and income proxy. The model's use more features to determine fraud helped improve the results signifgantly compared to the decision trees. 
 ### <img width="714" height="479" alt="Screenshot 2026-02-13 at 3 32 17 PM" src="https://github.com/user-attachments/assets/ab6e613d-abbe-4862-913f-8a1f68ce9894" />
-After RandomizedSearchCV: slight F1 decrease to 0.68, but recall and PR AUC improved
-Better than Decision Trees due to using a much wider range of features than decision trees 
-###  <img width="330" height="666" alt="Screenshot 2026-02-13 at 2 27 22 PM" src="https://github.com/user-attachments/assets/0a012e6f-8abb-4898-bce9-3642cb91da22" />
+After RandomizedSearchCV: The Random Forest model after the use of a Randomized Search for the best hyperparamaters had better recall scores than the initial Random Forest model, but precision scores were lower and the f1 score decreased by 0.04.  
+###  <img width="330" height="666" alt="Screenshot 2026-02-13 at 2 27 22 PM" src="https://github.com/user-attachments/assets/0a012e6f-8abb-4898-bce9-3642cb91da22" /> 
+Once again the ROC curve shows a result of 0.99.
 ### <img width="533" height="430" alt="Screenshot 2026-02-13 at 2 28 49 PM" src="https://github.com/user-attachments/assets/92379a77-d17e-40b8-8b96-5b0b718807fb" />
-
-### <img width="708" height="569" alt="Screenshot 2026-02-13 at 2 29 15 PM" src="https://github.com/user-attachments/assets/8c0ffb5d-8ce7-4a5d-ada9-7a294189bc3e" />
+The PRC score increased in this Random Forest model compared to the last one by 0.02
+### <img width="708" height="569" alt="Screenshot 2026-02-13 at 2 29 15 PM" src="https://github.com/user-attachments/assets/8c0ffb5d-8ce7-4a5d-ada9-7a294189bc3e" /> 
+The Randomized Search Random Forest model used the same features as the initial Random Forest. 
 ### <img width="1016" height="617" alt="Screenshot 2026-02-13 at 4 04 17 PM" src="https://github.com/user-attachments/assets/b913ce5a-2be2-4db9-a4cd-f24615850315" />
 
 ### XGBoost
