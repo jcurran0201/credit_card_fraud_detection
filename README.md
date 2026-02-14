@@ -91,7 +91,8 @@ The Randomized Search Random Forest model used a very similar set of features as
 
 ### XGBoost
 The initial XGBoost model trained with a precision of 0.79, recall of 0.88, and an f1-score of 0.84 and the test results were 0.65 for precision, 0.78 for recall, and an f1-score of 0.71. It can be concluded that overfitting is not an issue in this model. 
-### <img width="531" height="641" alt="Screenshot 2026-02-13 at 2 35 18 PM" src="https://github.com/user-attachments/assets/86431cc1-d53f-47d2-8587-6c4721f17247" />
+### <img width="531" height="641" alt="Screenshot 2026-02-13 at 2 35 18 PM" src="https://github.com/user-attachments/assets/86431cc1-d53f-47d2-8587-6c4721f17247" /> 
+ROC curve results at 0.99 are expected
 ### <img width="509" height="330" alt="Screenshot 2026-02-13 at 2 36 17 PM" src="https://github.com/user-attachments/assets/56e050d5-fa62-4d42-9b76-6b14c1967c3c" /> 
 The PRC score of 0.8 is the best PRC score out of all of the models tested. 
 ### <img width="421" height="578" alt="Screenshot 2026-02-13 at 2 37 46 PM" src="https://github.com/user-attachments/assets/aa5579c5-94fd-4b0b-aac6-c1a4aa912e36" />  
@@ -99,11 +100,11 @@ XGBoost used more a couple more features than Random Forest did, which likely he
 ### <img width="695" height="440" alt="Screenshot 2026-02-13 at 4 06 44 PM" src="https://github.com/user-attachments/assets/cebc06b8-0842-4b68-bf7f-b745297a7405" />
 After RandomizedSearchCV: slight increase in precision, minor drop in recall, F1 unchanged, PRC dropped very slightly. 
 ### <img width="372" height="665" alt="Screenshot 2026-02-13 at 4 14 42 PM" src="https://github.com/user-attachments/assets/6e911f95-c9db-4814-a77e-42f3be8f8901" /> 
-PRC came in around 0.795, which is nearly the same as the initial model
+ROC curve continues to show scores in the 0.99 range
 ### <img width="367" height="284" alt="Screenshot 2026-02-13 at 2 41 04 PM" src="https://github.com/user-attachments/assets/01ccd333-4007-4352-8820-d8867772a0d5" />  
-The new hyperparameters use the same amount of features that the initial XGBoost model did with some of the lesser features being weighted slightly more than others. 
+PRC came in around 0.795, which is nearly the same as the initial model
 ### <img width="397" height="338" alt="Screenshot 2026-02-13 at 2 41 47 PM" src="https://github.com/user-attachments/assets/e260b9c5-0f73-444a-8588-b4f0358c11af" /> 
-
+The new hyperparameters use the same amount of features that the initial XGBoost model did with some of the lesser features being weighted slightly more than others. 
 ### <img width="626" height="377" alt="Screenshot 2026-02-13 at 2 40 29 PM" src="https://github.com/user-attachments/assets/0ba8d8ad-f288-4cdd-a9ff-949b33cf7f4b" />
 
 ### Insights
@@ -115,4 +116,3 @@ Among the evaluated models, the Random Forest after RandomizedSearchCV was the m
 ### Areas of Improvement 
 One area for improvement in this project would be to make the machine learning model code easier to read by organizing it into reusable def() functions, similar to how functions were used earlier in the project. Functions could have been created to efficiently generate ROC and precision–recall curves, feature importance visualizations, and confusion matrices, which would improve both readability and reproducibility.
 Another area for improvement would be to test a wider range of probability thresholds for each model. Although the models performed very effectively, the probability thresholds for each model were determined through trial and error. It became clear that the thresholds needed to be at least 0.9, but a more systematic approach could have been implemented by using a loop to evaluate values across a defined range from 0.9-1. This would provide a more structured method for threshold selection.
-
