@@ -67,7 +67,7 @@ Primary features that were used in the model: amount spent in the transaction, t
 ### <img width="965" height="630" alt="Screenshot 2026-02-13 at 2 07 02 PM" src="https://github.com/user-attachments/assets/db8a7d87-b180-4854-a2ff-dd6dcc886a1c" />
 
 #### Decision Trees after RandomizedSearchCV  
-Even after tuning, it is highly sensitive to outliers, resulting in the model being overly aggressive in detecting fraud. Due the model’s overagression, it was decided to not investigate its financial impact because the model was clearly not usable in a real world scenario 
+Even after tuning, it is highly sensitive to outliers, resulting in the model being overly aggressive in detecting fraud. Due the model’s overagression, it was decided to not investigate its financial impact because the model was clearly not usable in a real world scenario  
 ### <img width="385" height="673" alt="Screenshot 2026-02-13 at 2 11 01 PM" src="https://github.com/user-attachments/assets/202ceddb-317b-4b3f-9479-f8c3b5e67c1f" />
 ### <img width="1280" height="494" alt="Screenshot 2026-02-13 at 2 11 53 PM" src="https://github.com/user-attachments/assets/396555b1-c2db-46af-aecc-a8b0218a0e17" />
 ### <img width="719" height="572" alt="Screenshot 2026-02-13 at 2 24 41 PM" src="https://github.com/user-attachments/assets/82cbf537-f960-40d4-9a36-6dc21dfbdbc5" />
