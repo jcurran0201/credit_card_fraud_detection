@@ -55,7 +55,7 @@ The initial hyperparamaters used were DecisionTreeClassifier(
     class_weight='balanced',
     random_state=42) 
 
-In the training set of the decision tree model the precision is 0.35 and the recal is 0.86. In the testing set the percision dropped 0.08 to 0.27 and the recall dropped 0.03 and the f1 score had a 0.1 point decrease. This suggests that the model does not have an overfitting problem. It should be noted that the decision tree model is extremely agressive in calling a transaction fraud. This is expected because of the sensitivity of decision trees to different features, class imbalance, hyperparamaters, and probability thresholds of fraud     
+In the training set of the decision tree model the precision is 0.35 and the recall is 0.86. In the testing set the percision dropped 0.08 to 0.27 and the recall dropped 0.03 and the f1 score had a 0.1 point decrease. This suggests that the model does not have an overfitting problem. It should be noted that the decision tree model is extremely agressive in calling a transaction fraud. This is expected because of the sensitivity of decision trees to different features, class imbalance, hyperparamaters, and probability thresholds of fraud     
 ### <img width="346" height="665" alt="d_tree classificaiton report before tuning" src="https://github.com/user-attachments/assets/a16a7f84-0465-4e80-b807-0ea977542b8f" /> 
 The root node in the tree starts with amount spent and as the tree gets deeper, it begins to use more unique features to decipher between fraud and normal transactions. 
 ### <img width="1137" height="466" alt="Screenshot 2026-02-13 at 2 05 52 PM" src="https://github.com/user-attachments/assets/1f23734d-61c5-4b1b-ba92-758d77e571fc" />   
