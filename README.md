@@ -84,7 +84,7 @@ After RandomizedSearchCV: The Random Forest model after the use of a Randomized 
 ###  <img width="330" height="666" alt="Screenshot 2026-02-13 at 2 27 22 PM" src="https://github.com/user-attachments/assets/0a012e6f-8abb-4898-bce9-3642cb91da22" /> 
 Once again the ROC curve shows a result of 0.99.
 ### <img width="533" height="430" alt="Screenshot 2026-02-13 at 2 28 49 PM" src="https://github.com/user-attachments/assets/92379a77-d17e-40b8-8b96-5b0b718807fb" />
-The PRC score increased in this Random Forest model compared to the last one by 0.02
+The PRC score of 0.78 is a 0.02 point increase from the initial Random Forest model. 
 ### <img width="708" height="569" alt="Screenshot 2026-02-13 at 2 29 15 PM" src="https://github.com/user-attachments/assets/8c0ffb5d-8ce7-4a5d-ada9-7a294189bc3e" /> 
 The Randomized Search Random Forest model used the same features as the initial Random Forest. 
 ### <img width="1016" height="617" alt="Screenshot 2026-02-13 at 4 04 17 PM" src="https://github.com/user-attachments/assets/b913ce5a-2be2-4db9-a4cd-f24615850315" />
