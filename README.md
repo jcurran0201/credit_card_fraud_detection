@@ -75,8 +75,10 @@ The primary features used in this decsion tree model are amount spent in the tra
 
 ### Random Forest
 The training set had a precision 0.91, a recall of 0.69, and an f1 score of 0.78. On the testing set the precision dropped 0.09 points to 0.82 and recall dropped 0.05 points to 0.64 and the f1 score was 0.72. This model is a significant improvement from the use of decision trees. Depspite the model not having as high of a recall score as the decision trees, its percision is much improved and the balance between percision and recall is a much better than being extremely agressive in declaring fraud and marking an excessive amount of non-fraud transactions fraud. 
-### <img width="524" height="666" alt="Screenshot 2026-02-13 at 4 09 53 PM" src="https://github.com/user-attachments/assets/bba1aac4-9ae9-47ed-9695-0198f6f061c6" />
-### <img width="469" height="576" alt="Screenshot 2026-02-13 at 2 26 31 PM" src="https://github.com/user-attachments/assets/3cf8415e-37aa-4dba-97bd-41155b172ae2" />
+### <img width="524" height="666" alt="Screenshot 2026-02-13 at 4 09 53 PM" src="https://github.com/user-attachments/assets/bba1aac4-9ae9-47ed-9695-0198f6f061c6" /> 
+#The ROC curve has an accuracy of 0.99, which is expected in each model used on this dataset because of the extreme class imbalance in the dataset. The PRC curve result was 0.76, which is a signifigant improvement from the PRC results in decision trees.
+### <img width="469" height="576" alt="Screenshot 2026-02-13 at 2 26 31 PM" src="https://github.com/user-attachments/assets/3cf8415e-37aa-4dba-97bd-41155b172ae2" /> 
+It can be noted that Random Forest uses significantly more fetures to determine fraudulent behavior than the decision trees. The primary features in the Random Forest model are amount spent in the transaction, money spend on the card in the last 24 hours, did the transaction occur at nighttime (10PM-6AM), card activity in the last week, the unique merchants the card was used at, average amount spent on the card, and income proxy. The model's use more features to determine fraud helped improve the results signifgantly compared to the decision trees. 
 ### <img width="714" height="479" alt="Screenshot 2026-02-13 at 3 32 17 PM" src="https://github.com/user-attachments/assets/ab6e613d-abbe-4862-913f-8a1f68ce9894" />
 After RandomizedSearchCV: slight F1 decrease to 0.68, but recall and PR AUC improved
 Better than Decision Trees due to using a much wider range of features than decision trees 
