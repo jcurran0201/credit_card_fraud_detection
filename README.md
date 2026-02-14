@@ -101,8 +101,6 @@ After RandomizedSearchCV: slight increase in precision, minor drop in recall, F1
 ### <img width="397" height="338" alt="Screenshot 2026-02-13 at 2 41 47 PM" src="https://github.com/user-attachments/assets/e260b9c5-0f73-444a-8588-b4f0358c11af" />
 ### <img width="626" height="377" alt="Screenshot 2026-02-13 at 2 40 29 PM" src="https://github.com/user-attachments/assets/0ba8d8ad-f288-4cdd-a9ff-949b33cf7f4b" />
 
-Probability threshold raised to 0.94 before RandomizedSearchCV the 0.95 after the RandomizedSearchCV to balance precision and recall
-Strongest model overall due to effective integration of behavioral, temporal, and demographic features
 ### Insights
 Decision Trees relied heavily on immediate transaction amounts and short-term totals, making them overly aggressive
 Random Forest and XGBoost incorporated broader context: time of day, cardholder age, and transaction history over several days/weeks
