@@ -74,7 +74,7 @@ The primary features used in this decsion tree model are amount spent in the tra
 
 
 ### Random Forest
-Initial performance: precision 0.82, recall 0.64, F1 0.72, PR AUC 0.76 
+The training set had a precision 0.91, a recall of 0.69, and an f1 score of 0.78. On the testing set the precision dropped 0.09 points to 0.82 and recall dropped 0.05 points to 0.64 and the f1 score was 0.72. This model is a significant improvement from the use of decision trees. Depspite the model not having as high of a recall score as the decision trees, its percision is much improved and the balance between percision and recall is a much better than being extremely agressive in declaring fraud and marking an excessive amount of non-fraud transactions fraud. 
 ### <img width="524" height="666" alt="Screenshot 2026-02-13 at 4 09 53 PM" src="https://github.com/user-attachments/assets/bba1aac4-9ae9-47ed-9695-0198f6f061c6" />
 ### <img width="469" height="576" alt="Screenshot 2026-02-13 at 2 26 31 PM" src="https://github.com/user-attachments/assets/3cf8415e-37aa-4dba-97bd-41155b172ae2" />
 ### <img width="714" height="479" alt="Screenshot 2026-02-13 at 3 32 17 PM" src="https://github.com/user-attachments/assets/ab6e613d-abbe-4862-913f-8a1f68ce9894" />
