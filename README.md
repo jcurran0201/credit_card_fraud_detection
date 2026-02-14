@@ -13,7 +13,7 @@ Temporal features: Weekend and off-peak transactions (10 PM–6 AM) were found a
 Demographic features: Cardholder age at transaction time computed from date of birth and spending habits based on the subject’s job title were used 
 Spatial features: Distance between cardholder residence and transaction location computed with the Haversine formula using latitude/longitude  coordinates provided. 
 ## Exploratory Data Analysis 
-Fraud transactions were mostly under $500  
+Fraud transactions were mostly under $500. Very few fraud transactions were $1,000 or more
 ### <img width="1016" height="626" alt="Money spent in fraud transactions" src="https://github.com/user-attachments/assets/5e212b60-0779-45d8-a69f-bc663bd285df" />
 
 Fraud victims had a slightly older average age, but it did not indicate that a specific age group is more vulnerable to becoming a victim of fraud
