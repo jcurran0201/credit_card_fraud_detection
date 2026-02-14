@@ -86,7 +86,7 @@ Once again the ROC curve shows a result of 0.99.
 ### <img width="533" height="430" alt="Screenshot 2026-02-13 at 2 28 49 PM" src="https://github.com/user-attachments/assets/92379a77-d17e-40b8-8b96-5b0b718807fb" />
 The PRC score of 0.78 is a 0.02 point increase from the initial Random Forest model. 
 ### <img width="708" height="569" alt="Screenshot 2026-02-13 at 2 29 15 PM" src="https://github.com/user-attachments/assets/8c0ffb5d-8ce7-4a5d-ada9-7a294189bc3e" /> 
-The Randomized Search Random Forest model used the same features as the initial Random Forest. 
+The Randomized Search Random Forest model used a very similar set of features as the initial Random Forest model. There are a couple of minor differences in how much the two Random Forest models weighted some of the less important features in the model. 
 ### <img width="1016" height="617" alt="Screenshot 2026-02-13 at 4 04 17 PM" src="https://github.com/user-attachments/assets/b913ce5a-2be2-4db9-a4cd-f24615850315" />
 
 ### XGBoost
