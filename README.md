@@ -1,7 +1,7 @@
 # Credit Card Fraud Detection 
 Built a machine learning system to detect fraudulent credit card transactions. Best model reduced missed fraud while minimizing false positives. Financial analysis shows significant loss reduction and operational impact.
 # Fraud Detection Project Overview 
-files used can be found at https://www.kaggle.com/datasets/kartik2112/fraud-detection 
+The files used can be found at https://www.kaggle.com/datasets/kartik2112/fraud-detection 
 The Kaggle Fraud Detection dataset is a large, synthetic credit card transactions dataset designed to support supervised fraud detection modeling. It simulates realistic consumer spending behavior across roughly 1,000 customers. The dataset is highly imbalanced, reflecting real-world fraud scenarios where fraudulent transactions are a small minority. Although synthetic, the data closely mirrors real financial patterns, making it well-suited for feature engineering, EDA, and machine learning model development.
 ## Data Cleaning
   No missing values or duplicates were present
