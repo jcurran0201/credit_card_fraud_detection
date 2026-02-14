@@ -47,13 +47,6 @@ Model Performance
 Decision trees were used here as a baseline model to determine which features might be more heavily valued in more competitive models. 
 Default probability threshold (0.5) led to excessive false positives. Threshold increased to 0.9 to reduce false positives 
 #### Decision Trees before RandomizedSearchCV  
-The initial hyperparamaters used were DecisionTreeClassifier(
-    criterion='entropy',
-    max_depth=7,
-    min_samples_leaf=500,
-    min_samples_split=100,
-    class_weight='balanced',
-    random_state=42) 
 
 In the training set of the decision tree model the precision is 0.35 and the recall is 0.86. In the testing set the percision dropped 0.08 to 0.27 and the recall dropped 0.03 and the f1 score had a 0.1 point decrease. This suggests that the model does not have an overfitting problem. It should be noted that the decision tree model is extremely agressive in calling a transaction fraud. This is expected because of the sensitivity of decision trees to different features, class imbalance, hyperparamaters, and probability thresholds of fraud     
 ### <img width="346" height="665" alt="d_tree classificaiton report before tuning" src="https://github.com/user-attachments/assets/a16a7f84-0465-4e80-b807-0ea977542b8f" /> 
