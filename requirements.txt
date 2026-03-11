@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+scikit-learn
+xgboost
+pandas
+numpy
+joblib
+reverse_geocoder
+pydantic
