@@ -48,7 +48,7 @@ Class imbalance was handled via class weighting and threshold tuning rather than
 | ❌ Fraud Missed (FN) | $250,991 | $131,025 | $137,046 | $165,008 |
 | ⚠️ Legit Blocked (FP) | $108,884 | $384,410 | $445,262 | $356,053 |
 | ✔️ Legit Passed (TN) | $37,320,695 | $37,045,169 | $36,984,316 | $37,073,525 |
-| **Net Fraud Recovery (Fraud Caught - Legit Blocked)** | **$773,449** | **$617,890** | **$551,017** | **$612,264** |
+| **Net Fraud Recovery (Fraud Caught - Legit Blocked)** | $773,449 | $617,890 | $551,017 | $612,264 |
 
 Despite RF Tuned having a slightly lower net recovery than RF Untuned, it was selected for deployment because it catches the most raw fraud value ($1,002,299) and reduces missed fraud to its lowest point ($131,025). In a real fraud system, minimizing undetected fraud is the priority — false positives can be resolved through the review tier, but missed fraud is unrecoverable.
 
