@@ -2,7 +2,7 @@
 
 A machine learning system to detect fraudulent credit card transactions using the [Kaggle Fraud Detection Dataset](https://www.kaggle.com/datasets/kartik2112/fraud-detection), a synthetic dataset simulating ~1,000 cardholders with realistic, heavily imbalanced transaction data.
 
-In fraud detection, the cost of missing fraud far exceeds the cost of a false positive. A blocked legitimate transaction is an inconvenience; undetected fraud is an unrecoverable loss. This project evaluates models on financial impact — not just F1 — and deploys the model that minimizes missed fraud.
+Credit card fraud causes over $10 billion in total losses annually. In this dataset, fraud accounts for about 1% of transactions but represents ~$1.13M in total fraudulent volume across ~$38M in overall spend. A model optimized purely for accuracy would simply approve everything and still be right 99% of the time, which is why this project evaluates every model on financial impact instead. The 3-tier decision engine (approve/review/block) replicates how real fraud systems operate: the review tier routes borderline transactions to a human analyst queue rather than blocking them outright, reducing customer disruption while keeping fraud exposure low.
 
 This project implements a production-style fraud detection system with:
 
