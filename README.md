@@ -50,7 +50,7 @@ Class imbalance was handled via class weighting and threshold tuning rather than
 | ✔️ Legit Passed (TN) | $37,320,695 | $37,045,169 | $36,984,316 | $37,073,525 |
 | **Net Fraud Recovery (Fraud Caught - Legit Blocked)** | $773,449 | $617,890 | $551,017 | $612,264 |
 
-RF Tuned was selected for deployment because it catches the most raw fraud value ($1,002,299 — **88% of money involved in fraudulent transactions**) and reduces missed fraud to its lowest point ($131,025). The tradeoff is $384,410 in blocked legitimate transactions, which represents a real cost to customers but one that can be remediated unlike undetected fraud
+RF Tuned was selected for deployment because it catches the most raw fraud value ($1,002,299 — **88% of money involved in fraudulent transactions**) and reduces missed fraud to its lowest point ($131,025). The tradeoff is $384,410 in blocked legitimate transactions, which represents a real cost to customers but one that can be remediated unlike undetected fraud.
 
 ---
 
