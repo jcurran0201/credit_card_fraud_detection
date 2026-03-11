@@ -36,7 +36,7 @@ Class imbalance was handled via **class weighting and threshold tuning** rather 
 - Top fraudulent merchants: **Kozey-Boehm, Kuhic LLC, Terry-Huel, Boyer PLC**
 - Most important features: transaction amount, 24-hour spend total, off-peak flag, weekly card activity
 - **Tuned Random Forest** recovered the most fraud value (1M) with the fewest missed cases ($131K lost), at the cost of more false positives (~$384K blocked)
-- **Tuned XGBoost** offered a better precision-recall balance with fewer customer disruptions
+- **Tuned XGBoost** offered a better precision-recall balance with fewer customer disruptions. Tuned XGBoost did not recover as much money as the Tuned Random Forest did
 
 ---
 
