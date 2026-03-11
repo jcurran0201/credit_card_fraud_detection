@@ -20,7 +20,7 @@ A machine learning system to detect fraudulent credit card transactions using th
 | Decision Tree (baseline) | 0.27 | 0.83 | — | 0.69 | 
 | Decision Tree (tuned) | 0.22 | 0.84 | — | 0.64 |
 | Random Forest | 0.82 | 0.64 | 0.72 | 0.76 |
-| Random Forest + Tuning ✅| 0.73 | 0.69 | 0.71 | 0.78 |
+| Random Forest + Tuning ✅| 0.73 | 0.69 | 0.68 | 0.78 |
 | XGBoost | 0.65 | 0.78 | 0.71 | 0.80 |
 | XGBoost + Tuning | 0.66 | 0.77 | 0.71 | 0.80 |
 
