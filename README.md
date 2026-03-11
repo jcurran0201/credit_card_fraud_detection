@@ -34,7 +34,7 @@ Class imbalance was handled via class weighting and threshold tuning rather than
 - **Tuned XGBoost** offered a better precision-recall balance with fewer customer disruptions
 
 
-## FraudSentinel — Deployment
+## Deployment
 A FastAPI backend + HTML frontend for real-time fraud detection, serving a tuned Random Forest model via REST API.
 
 ### Setup
