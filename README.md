@@ -17,25 +17,22 @@ A machine learning system to detect fraudulent credit card transactions using th
 
 | Model | Precision | Recall | F1 | PR AUC |
 |---|---|---|---|---|
-| Decision Tree (baseline) | 0.27 | 0.83 | — | 0.69 |
+| Decision Tree (baseline) | 0.27 | 0.83 | — | 0.69 | 
+| Decision Tree (tuned) | 0.22 | 0.84 | — | 0.64 |
 | Random Forest | 0.82 | 0.64 | 0.72 | 0.76 |
-| Random Forest + Tuning | 0.73 | 0.69 | 0.71 | 0.78 |
+| Random Forest + Tuning ✅| 0.73 | 0.69 | 0.71 | 0.78 |
 | XGBoost | 0.65 | 0.78 | 0.71 | 0.80 |
 | XGBoost + Tuning | 0.66 | 0.77 | 0.71 | 0.80 |
 
 Class imbalance was handled via class weighting and threshold tuning rather than SMOTE, to preserve natural transaction patterns.
 
----
-
 ## Key Findings
-
-- Fraud transactions were mostly under $500; high-value fraud was rare
+- Fraud transactions were mostly under $500; high-value fraud was uncommon
 - Top fraudulent merchants: **Kozey-Boehm, Kuhic LLC, Terry-Huel, Boyer PLC**
 - Most important features across models: transaction amount, 24-hour spend total, off-peak flag, weekly card activity
 - **Tuned Random Forest** recovered the most fraud value (~$1M) with fewest missed fraud cases (~$131K), at the cost of more false positives (~$384K)
 - **Tuned XGBoost** offered a better precision-recall balance with fewer customer disruptions
 
----
 
 ## FraudSentinel — Deployment
 
