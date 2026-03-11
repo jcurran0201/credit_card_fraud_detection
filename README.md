@@ -4,7 +4,7 @@ A machine learning system to detect fraudulent credit card transactions using th
 
 ---
 
-## Features Engineered
+## Feature Engineering
 
 | Category | Features |
 |----------|----------|
@@ -42,7 +42,7 @@ Class imbalance was handled via **class weighting and threshold tuning** rather 
 
 ## Deployment
 
-A **FastAPI backend + HTML frontend** for real-time fraud scoring, serving the tuned Random Forest model via REST API.
+A **FastAPI backend & HTML frontend** for real-time fraud scoring, serving the tuned Random Forest model via REST API.
 
 ### Setup
 
