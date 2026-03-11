@@ -26,11 +26,11 @@ A machine learning system to detect fraudulent credit card transactions using th
 | XGBoost | 0.65 | 0.78 | 0.71 | 0.80 |
 | XGBoost + Tuning | 0.66 | 0.77 | 0.71 | 0.80 |
 
-Class imbalance was handled via **class weighting and threshold tuning** rather than SMOTE in order to preserve natural transaction patterns.
+Class imbalance was handled via class weighting and threshold tuning rather than SMOTE in order to preserve natural transaction patterns.
 
 ---
 
-## Key Findings
+## Key Findings from testing phase
 
 - Fraud transactions were mostly **under $500**; high-value fraud was uncommon
 - Top fraudulent merchants: **Kozey-Boehm, Kuhic LLC, Terry-Huel, Boyer PLC**
