@@ -1,16 +1,16 @@
 # Credit Card Fraud Detection
 
-A machine learning system to detect fraudulent credit card transactions using the [Kaggle Fraud Detection Dataset](https://www.kaggle.com/datasets/kartik2112/fraud-detection) a synthetic dataset simulating ~1,000 cardholders with realistic, heavily imbalanced transaction data. This project implements a production-style fraud detection system with:
+A machine learning system to detect fraudulent credit card transactions using the [Kaggle Fraud Detection Dataset](https://www.kaggle.com/datasets/kartik2112/fraud-detection), a synthetic dataset simulating ~1,000 cardholders with realistic, heavily imbalanced transaction data.
 
-   - **Real-time transaction scoring**
-    
-   - **Behavioral cardholder profiling**
-     
-   - **FastAPI that deploys the model**
-     
-   - **Custom frontend dashboard**
-     
-   - **3-tier fraud decision engine (approve/review/block)**
+In fraud detection, the cost of missing fraud far exceeds the cost of a false positive. A blocked legitimate transaction is an inconvenience; undetected fraud is an unrecoverable loss. This project evaluates models on financial impact — not just F1 — and deploys the model that minimizes missed fraud.
+
+This project implements a production-style fraud detection system with:
+
+- **Real-time transaction scoring**
+- **Behavioral cardholder profiling**
+- **FastAPI REST API**
+- **Custom frontend dashboard**
+- **3-tier fraud decision engine (approve/review/block)**
 
 ---
 
@@ -40,27 +40,25 @@ Class imbalance was handled via class weighting and threshold tuning rather than
 
 ---
 
+## Financial Impact Comparison
 
-## Financial Impact Comparison 
 | Metric | RF Untuned | RF Tuned | XGB Untuned | XGB Tuned |
 |--------|-----------|----------|-------------|-----------|
 | ✅ Fraud Caught (TP) | $882,333 | $1,002,299 | $996,279 | $968,317 |
 | ❌ Fraud Missed (FN) | $250,991 | $131,025 | $137,046 | $165,008 |
 | ⚠️ Legit Blocked (FP) | $108,884 | $384,410 | $445,262 | $356,053 |
 | ✔️ Legit Passed (TN) | $37,320,695 | $37,045,169 | $36,984,316 | $37,073,525 |
-| **Net Fraud Recovery (Fraud Caught - Legit Blocked)** | $773,449 | $617,890 | $551,017 | $612,264 |
+| **Net Fraud Recovery (Fraud Caught - Legit Blocked)** | **$773,449** | **$617,890** | **$551,017** | **$612,264** |
 
-Despite RF Tuned having a slightly lower net recovery than RF Untuned, it was selected for deployment because it catches the most raw fraud value ($1,002,299) and reduces missed fraud to its lowest point ($131,025). In a real fraud system, minimizing undetected fraud is the priority. False positives can be resolved, but missed fraud is unrecoverable.
+Despite RF Tuned having a lower net recovery than RF Untuned, it was selected for deployment because it catches the most raw fraud value ($1,002,299) and reduces missed fraud to its lowest point ($131,025). In a real fraud system, minimizing undetected fraud is the priority. False positives can be resolved; missed fraud is unrecoverable.
 
 ---
 
-## Key Findings from testing phase
+## Key Findings
 
 - Fraud transactions were mostly **under $500**; high-value fraud was uncommon
 - Top fraudulent merchants: **Kozey-Boehm, Kuhic LLC, Terry-Huel, Boyer PLC**
 - Most important features: transaction amount, 24-hour spend total, off-peak flag, weekly card activity
-- **Tuned Random Forest** recovered the most fraud value (1M) with the fewest missed cases ($131K lost), at the cost of more false positives (~$384K blocked)
-- **Tuned XGBoost** offered a better precision-recall balance with fewer customer disruptions. Tuned XGBoost did not recover as much money as the Tuned Random Forest did
 
 ---
 
@@ -79,7 +77,7 @@ pip install -r requirements.txt
 
 **3. Start the API**
 ```bash
-uvicorn Deployment_code:app --reload --host 0.0.0.0 --port 8000
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
 
 **4. Open the frontend** — open `index.html` in your browser. It connects to `http://localhost:8000` by default.
@@ -118,4 +116,4 @@ uvicorn Deployment_code:app --reload --host 0.0.0.0 --port 8000
 ## Future Improvements
 
 - Systematic probability threshold search (0.9–1.0 range) instead of manual tuning
-- Persist card behavioral profiles across server restarts 
+- Persist card behavioral profiles across server restarts
