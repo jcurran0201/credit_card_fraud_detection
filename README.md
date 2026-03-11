@@ -35,11 +35,9 @@ Class imbalance was handled via class weighting and threshold tuning rather than
 
 
 ## FraudSentinel — Deployment
-
-A FastAPI backend + HTML frontend for real-time fraud detection, serving both tuned models via REST API.
+A FastAPI backend + HTML frontend for real-time fraud detection, serving a tuned Random Forest model via REST API.
 
 ### Setup
-
 **1. Place your data files** — put `fraudTrain.csv` and `fraudTest.csv` in the same directory as `main.py`.
 
 **2. Install dependencies**
@@ -51,7 +49,6 @@ pip install -r requirements.txt
 ```bash
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
-> ⚠️ On first startup, both models are trained. This takes a few minutes.
 
 **4. Open the frontend** — open `index.html` in your browser. It connects to `http://localhost:8000`.
 
@@ -59,11 +56,12 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 
 | Method | Path | Description |
 |--------|------|-------------|
-| GET | `/` | Health check + loaded models |
+| GET | `/` | Health check + loaded model |
 | GET | `/health` | Simple status |
-| POST | `/predict/xgb` | XGBoost prediction |
-| POST | `/predict/rf` | Random Forest prediction |
-| GET | `/models/info` | Model params + thresholds |
+| POST | `/predict` | Random Forest prediction |
+| GET | `/model/info` | Model params + thresholds |
+| GET | `/card/{cc_num}/profile` | View behavioral history for a card |
+| DELETE | `/card/{cc_num}/profile` | Clear a card's history |
 
 ### Model Thresholds
 
