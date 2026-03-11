@@ -480,7 +480,7 @@ def predict(transaction: Transaction):
     fi = {
     "transaction_amount":  round(transaction.amt, 2),
     "fraud_caught_saved":  round(transaction.amt, 2) if risk_tier == "AUTO_BLOCK" else 0.0,
-    "legitimate_blocked":  round(transaction.amt, 2) if risk_tier == "REVIEW" else 0.0,
+    "flagged_for_review":  round(transaction.amt, 2) if risk_tier == "REVIEW" else 0.0,
     "fraud_missed_lost":   round(transaction.amt, 2) if risk_tier == "AUTO_APPROVE" else 0.0,
 }
 
