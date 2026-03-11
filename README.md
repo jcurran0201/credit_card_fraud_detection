@@ -77,7 +77,7 @@ pip install -r requirements.txt
 
 **3. Start the API**
 ```bash
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
+uvicorn  Deployment_code:app --reload --host 0.0.0.0 --port 8000
 ```
 
 **4. Open the frontend** — open `index.html` in your browser. It connects to `http://localhost:8000` by default.
