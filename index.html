@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FraudShield — Detection API</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f4f4f7;
+      --surface: #ffffff;
+      --border: #e0e0ea;
+      --accent: #d92b2b;
+      --accent2: #e87820;
+      --safe: #00923f;
+      --text: #12121a;
+      --muted: #888898;
+      --mono: 'Space Mono', monospace;
+      --sans: 'Syne', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── BACKGROUND GRID ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image:
+        linear-gradient(rgba(180,0,0,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(180,0,0,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 2.5rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(244,244,247,0.90);
+      backdrop-filter: blur(12px);
+    }
+
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .logo span { color: var(--accent); }
+
+    #status-pill {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px;
+      background: var(--border);
+      border: 1px solid var(--muted);
+      color: var(--muted);
+      background: #ebebf2;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.4s;
+    }
+    #status-pill.online { border-color: var(--safe); color: var(--safe); background: rgba(0,146,63,0.07); }
+    #status-pill .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+    #status-pill.online .dot { animation: pulse 1.4s infinite; }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.75); }
+    }
+
+    /* ── LAYOUT ── */
+    .container {
+      position: relative;
+      z-index: 5;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 2rem;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 2.5rem 4rem;
+    }
+
+    /* ── HERO TEXT ── */
+    .hero {
+      grid-column: 1 / -1;
+      padding: 3.5rem 0 1rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      max-width: 600px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+      position: relative;
+    }
+    .hero p {
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-family: var(--mono);
+      max-width: 480px;
+      line-height: 1.7;
+    }
+
+    /* ── PANEL ── */
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .panel-header {
+      padding: 1rem 1.4rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.7rem;
+      font-family: var(--mono);
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .panel-header .tag {
+      background: rgba(255,59,59,0.12);
+      color: var(--accent);
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.65rem;
+    }
+
+    /* ── FORM ── */
+    .form-body {
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    .field-row.triple { grid-template-columns: 1fr 1fr 1fr; }
+    .field-row.solo { grid-template-columns: 1fr; }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .field label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .field input, .field select {
+      background: #f9f9fc;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.55rem 0.75rem;
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+    .field input:focus, .field select:focus { border-color: var(--accent); }
+    .field input::placeholder { color: var(--muted); }
+    .field select option { background: #fff; }
+
+    .section-divider {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .section-divider::before, .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .submit-btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    .submit-btn:hover { background: #ff5555; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(255,59,59,0.3); }
+    .submit-btn:active { transform: translateY(0); }
+    .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    /* ── RESULT PANEL ── */
+    .result-area {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    #verdict-card {
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.4s, transform 0.4s;
+    }
+    #verdict-card.visible { opacity: 1; transform: translateY(0); }
+
+    .verdict-banner {
+      padding: 1.8rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .verdict-icon {
+      font-size: 2.5rem;
+      line-height: 1;
+    }
+    .verdict-text .label {
+      font-size: 0.65rem;
+      font-family: var(--mono);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+    .verdict-text .decision {
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+    .verdict-text .prob {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-top: 0.1rem;
+    }
+
+    .verdict-banner.fraud { background: rgba(217,43,43,0.06); border-bottom: 1px solid rgba(217,43,43,0.18); }
+    .verdict-banner.safe  { background: rgba(0,146,63,0.05); border-bottom: 1px solid rgba(0,146,63,0.15); }
+    .verdict-banner.fraud .decision { color: var(--accent); }
+    .verdict-banner.safe  .decision { color: var(--safe); }
+
+    /* probability bar */
+    .prob-bar-wrap {
+      padding: 1rem 1.4rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .prob-bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .prob-bar-track {
+      height: 6px;
+      background: var(--border);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .prob-bar-fill {
+      height: 100%;
+      border-radius: 99px;
+      width: 0%;
+      transition: width 0.8s cubic-bezier(0.16,1,0.3,1);
+    }
+    .prob-bar-fill.fraud { background: linear-gradient(90deg, var(--accent2), var(--accent)); }
+    .prob-bar-fill.safe  { background: linear-gradient(90deg, #00b248, var(--safe)); }
+
+    /* stats grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .stat-cell {
+      padding: 0.9rem 1.2rem;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .stat-cell:nth-child(even) { border-right: none; }
+    .stat-cell:nth-last-child(-n+2) { border-bottom: none; }
+    .stat-cell .stat-label {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.25rem;
+    }
+    .stat-cell .stat-val {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    /* card context */
+    #context-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.4s 0.15s, transform 0.4s 0.15s;
+    }
+    #context-panel.visible { opacity: 1; transform: translateY(0); }
+
+    .ctx-list {
+      padding: 0.6rem 0;
+    }
+    .ctx-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 1.2rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.78rem;
+    }
+    .ctx-row:last-child { border-bottom: none; }
+    .ctx-row .ctx-key { font-family: var(--mono); color: var(--muted); font-size: 0.7rem; }
+    .ctx-row .ctx-val { font-family: var(--mono); font-weight: 700; font-size: 0.75rem; }
+    .ctx-row .ctx-val.true  { color: var(--safe); }
+    .ctx-row .ctx-val.false { color: var(--muted); }
+    .ctx-row .ctx-val.warn  { color: var(--accent2); }
+
+    /* ── RAW RESPONSE ── */
+    #raw-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      opacity: 0;
+      transition: opacity 0.4s 0.25s;
+    }
+    #raw-panel.visible { opacity: 1; }
+    #raw-json {
+      padding: 1rem 1.4rem;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      line-height: 1.8;
+      color: #555;
+      white-space: pre-wrap;
+      word-break: break-all;
+      max-height: 260px;
+      overflow-y: auto;
+    }
+    #raw-json::-webkit-scrollbar { width: 4px; }
+    #raw-json::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+
+    /* ── ERROR ── */
+    #error-box {
+      display: none;
+      background: rgba(217,43,43,0.06);
+      border: 1px solid rgba(217,43,43,0.25);
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+    }
+
+    /* ── ENDPOINT DOC ── */
+    .endpoints-panel {
+      grid-column: 1 / -1;
+    }
+    .ep-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .ep-card {
+      background: var(--surface);
+      padding: 1.2rem 1.4rem;
+    }
+    .ep-method {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.05em;
+    }
+    .ep-method.GET  { background: rgba(0,230,118,0.12); color: var(--safe); }
+    .ep-method.POST { background: rgba(255,140,66,0.12); color: var(--accent2); }
+    .ep-method.DEL  { background: rgba(255,59,59,0.12);  color: var(--accent); }
+    .ep-path {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+    .ep-desc {
+      font-size: 0.75rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* loading spinner */
+    .spinner {
+      width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      display: none;
+    }
+    .submit-btn.loading .spinner { display: block; }
+    .submit-btn.loading .btn-label { display: none; }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* responsive */
+    @media (max-width: 900px) {
+      .container { grid-template-columns: 1fr; }
+      .hero { grid-column: 1; }
+      .endpoints-panel { grid-column: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Fraud<span>Shield</span></div>
+  <div id="status-pill">
+    <span class="dot"></span>
+    <span id="status-text">Checking API…</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>Real-time<br/><em>fraud detection</em><br/>at the edge.</h1>
+    <p>Random Forest model with live card behavioral profiling. POST a transaction, get an instant verdict.</p>
+  </div>
+
+  <!-- FORM PANEL -->
+  <div>
+    <div class="panel">
+      <div class="panel-header">
+        <span class="tag">POST</span>
+        /predict
+      </div>
+      <div class="form-body">
+
+        <div class="section-divider">Card &amp; Transaction</div>
+
+        <div class="field-row">
+          <div class="field">
+            <label>Card Number</label>
+            <input id="cc_num" type="text" placeholder="e.g. 4532123456781234" />
+          </div>
+          <div class="field">
+            <label>Amount ($)</label>
+            <input id="amt" type="number" step="0.01" placeholder="e.g. 149.99" />
+          </div>
+        </div>
+
+        <div class="field-row solo">
+          <div class="field">
+            <label>Merchant</label>
+            <input id="merchant" type="text" placeholder="e.g. Amazon" />
+          </div>
+        </div>
+
+        <div class="section-divider">Location</div>
+
+        <div class="field-row">
+          <div class="field">
+            <label>Cardholder Lat</label>
+            <input id="lat" type="number" step="any" placeholder="e.g. 40.7128" />
+          </div>
+          <div class="field">
+            <label>Cardholder Long</label>
+            <input id="long" type="number" step="any" placeholder="e.g. -74.0060" />
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label>Merchant Lat</label>
+            <input id="merch_lat" type="number" step="any" placeholder="e.g. 34.0522" />
+          </div>
+          <div class="field">
+            <label>Merchant Long</label>
+            <input id="merch_long" type="number" step="any" placeholder="e.g. -118.2437" />
+          </div>
+        </div>
+
+        <div class="section-divider">Cardholder Details <em style="font-style:normal;color:var(--muted);font-size:0.55rem;">(optional, improves accuracy)</em></div>
+
+        <div class="field-row">
+          <div class="field">
+            <label>Income Proxy (Annual $)</label>
+            <select id="income_proxy_override">
+              <option value="">— Use model default —</option>
+              <option value="15000">Under $20k — Entry level / part-time</option>
+              <option value="30000">$20k–$40k — Service / trade worker</option>
+              <option value="50000">$40k–$60k — Mid-level employee</option>
+              <option value="75000">$60k–$90k — Skilled professional</option>
+              <option value="110000">$90k–$130k — Senior professional</option>
+              <option value="160000">$130k–$200k — Manager / specialist</option>
+              <option value="250000">$200k+ — Executive / high earner</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Date of Birth</label>
+            <input id="dob" type="date" />
+          </div>
+        </div>
+
+        <div class="field-row solo">
+          <div class="field">
+            <label>Transaction Timestamp <em style="font-style:normal;color:var(--muted)">(leave blank for now)</em></label>
+            <input id="trans_timestamp" type="datetime-local" />
+          </div>
+        </div>
+
+        <div class="field-row solo">
+          <div class="field">
+            <label>API Base URL</label>
+            <input id="api_base" type="text" value="http://localhost:8000" />
+          </div>
+        </div>
+
+        <button class="submit-btn" id="submit-btn" onclick="submitPrediction()">
+          <span class="spinner"></span>
+          <span class="btn-label">▶ Run Detection</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="result-area">
+
+    <div id="error-box"></div>
+
+    <div id="verdict-card">
+      <div id="verdict-banner" class="verdict-banner">
+        <div class="verdict-icon" id="verdict-icon"></div>
+        <div class="verdict-text">
+          <div class="label">Detection Result</div>
+          <div class="decision" id="verdict-decision"></div>
+          <div class="prob" id="verdict-prob"></div>
+        </div>
+      </div>
+      <div class="prob-bar-wrap">
+        <div class="prob-bar-label">
+          <span>Fraud Probability</span>
+          <span id="prob-pct"></span>
+        </div>
+        <div class="prob-bar-track">
+          <div class="prob-bar-fill" id="prob-fill"></div>
+        </div>
+      </div>
+      <div class="stats-grid" id="stats-grid"></div>
+    </div>
+
+    <div id="context-panel">
+      <div class="panel-header">Card Behavioral Context</div>
+      <div class="ctx-list" id="ctx-list"></div>
+    </div>
+
+    <div id="raw-panel">
+      <div class="panel-header">Raw Response</div>
+      <pre id="raw-json"></pre>
+    </div>
+
+  </div>
+
+  <!-- ENDPOINTS DOC -->
+  <div class="endpoints-panel">
+    <div class="panel">
+      <div class="panel-header">API Endpoints</div>
+      <div class="ep-grid">
+        <div class="ep-card">
+          <span class="ep-method GET">GET</span>
+          <div class="ep-path">/</div>
+          <div class="ep-desc">Status check — model loaded, cards profiled.</div>
+        </div>
+        <div class="ep-card">
+          <span class="ep-method GET">GET</span>
+          <div class="ep-path">/health</div>
+          <div class="ep-desc">Health probe for uptime monitoring.</div>
+        </div>
+        <div class="ep-card">
+          <span class="ep-method POST">POST</span>
+          <div class="ep-path">/predict</div>
+          <div class="ep-desc">Submit a transaction for fraud scoring.</div>
+        </div>
+        <div class="ep-card">
+          <span class="ep-method GET">GET</span>
+          <div class="ep-path">/card/{cc_num}/profile</div>
+          <div class="ep-desc">View stored behavioral history for a card.</div>
+        </div>
+        <div class="ep-card">
+          <span class="ep-method DEL">DELETE</span>
+          <div class="ep-path">/card/{cc_num}/profile</div>
+          <div class="ep-desc">Reset a card's history for clean testing.</div>
+        </div>
+        <div class="ep-card">
+          <span class="ep-method GET">GET</span>
+          <div class="ep-path">/model/info</div>
+          <div class="ep-desc">Inspect model type, params, threshold &amp; features.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const BASE = () => document.getElementById('api_base').value.replace(/\/$/, '');
+
+  // ── status check ──────────────────────────────────────────────────────────
+  async function checkStatus() {
+    const pill = document.getElementById('status-pill');
+    const txt  = document.getElementById('status-text');
+    try {
+      const r = await fetch(BASE() + '/health', { signal: AbortSignal.timeout(3000) });
+      if (r.ok) {
+        const d = await r.json();
+        pill.className = 'online';
+        pill.innerHTML = `<span class="dot"></span><span>${d.cards_profiled.toLocaleString()} cards loaded</span>`;
+      } else {
+        throw new Error();
+      }
+    } catch {
+      pill.className = '';
+      pill.innerHTML = `<span class="dot"></span><span>API offline</span>`;
+      txt && (txt.textContent = 'API offline');
+    }
+  }
+  checkStatus();
+  setInterval(checkStatus, 12000);
+
+  // ── helpers ───────────────────────────────────────────────────────────────
+  function v(id) { return document.getElementById(id).value.trim(); }
+
+  function setLoading(on) {
+    const btn = document.getElementById('submit-btn');
+    btn.classList.toggle('loading', on);
+    btn.disabled = on;
+  }
+
+  function showError(msg) {
+    const box = document.getElementById('error-box');
+    box.style.display = 'block';
+    box.textContent = '⚠ ' + msg;
+  }
+  function clearError() {
+    document.getElementById('error-box').style.display = 'none';
+  }
+
+  // ── submit ────────────────────────────────────────────────────────────────
+  async function submitPrediction() {
+    clearError();
+    const ccNum = v('cc_num');
+    const amt   = parseFloat(v('amt'));
+    if (!ccNum || isNaN(amt)) {
+      showError('Card number and amount are required.');
+      return;
+    }
+
+    const payload = {
+      cc_num:   ccNum,
+      amt,
+      merchant: v('merchant') || 'Unknown',
+    };
+
+    const lat = parseFloat(v('lat'));
+    const lng = parseFloat(v('long'));
+    const mlat = parseFloat(v('merch_lat'));
+    const mlng = parseFloat(v('merch_long'));
+    if (!isNaN(lat))  payload.lat       = lat;
+    if (!isNaN(lng))  payload.long      = lng;
+    if (!isNaN(mlat)) payload.merch_lat = mlat;
+    if (!isNaN(mlng)) payload.merch_long = mlng;
+    const incomeVal = v('income_proxy_override');
+    if (incomeVal) payload.income_proxy_override = parseFloat(incomeVal);
+    if (v('dob'))  payload.dob  = v('dob');
+    if (v('trans_timestamp')) {
+      const ts = new Date(v('trans_timestamp'));
+      payload.trans_timestamp = ts.toISOString();
+    }
+
+    setLoading(true);
+    try {
+      const res = await fetch(BASE() + '/predict', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(payload),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.detail || JSON.stringify(data));
+      renderResult(data);
+    } catch (e) {
+      showError(e.message);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  // ── render ────────────────────────────────────────────────────────────────
+  function renderResult(d) {
+    const fraud = d.is_fraud;
+    const prob  = d.fraud_probability;
+
+    // verdict card
+    const card = document.getElementById('verdict-card');
+    const banner = document.getElementById('verdict-banner');
+    banner.className = 'verdict-banner ' + (fraud ? 'fraud' : 'safe');
+    document.getElementById('verdict-icon').textContent    = fraud ? '🚨' : '✅';
+    document.getElementById('verdict-decision').textContent = fraud ? 'FRAUD DETECTED' : 'LEGITIMATE';
+    document.getElementById('verdict-prob').textContent    = `Model: ${d.model}`;
+
+    // prob bar
+    const pct = Math.round(prob * 10000) / 100;
+    document.getElementById('prob-pct').textContent = pct.toFixed(2) + '%';
+    const fill = document.getElementById('prob-fill');
+    fill.className = 'prob-bar-fill ' + (fraud ? 'fraud' : 'safe');
+    setTimeout(() => fill.style.width = pct + '%', 50);
+
+    // stats
+    const fi = d.financial_impact;
+    const statsHtml = [
+      { label: 'Transaction',    val: '$' + fi.transaction_amount.toFixed(2) },
+      { label: 'Fraud Caught',   val: '$' + fi.fraud_caught_saved.toFixed(2), hi: fi.fraud_caught_saved > 0 },
+      { label: 'Fraud Missed',   val: '$' + fi.fraud_missed_lost.toFixed(2),  warn: fi.fraud_missed_lost > 0 },
+      { label: 'Legit Blocked',  val: '$' + fi.legitimate_blocked.toFixed(2), warn: fi.legitimate_blocked > 0 },
+    ].map(s => `
+      <div class="stat-cell">
+        <div class="stat-label">${s.label}</div>
+        <div class="stat-val" style="${s.hi ? 'color:var(--safe)' : s.warn ? 'color:var(--accent2)' : ''}">${s.val}</div>
+      </div>`).join('');
+    document.getElementById('stats-grid').innerHTML = statsHtml;
+    card.classList.add('visible');
+
+    // context
+    const ctx = d.card_context;
+    const ctxRows = [
+      { k: 'Card history size',        v: ctx.card_history_size },
+      { k: 'Avg txn amount',           v: '$' + ctx.card_avg_amt },
+      { k: 'Amt vs card avg ratio',    v: ctx.amt_vs_avg_ratio ?? 'N/A',  warn: ctx.amt_vs_avg_ratio > 3 },
+      { k: 'Txns last 1h',             v: ctx.txns_last_1h,               warn: ctx.txns_last_1h > 3 },
+      { k: 'Txns last 24h',            v: ctx.txns_last_24h },
+      { k: 'Spend last 24h',           v: '$' + ctx.spend_last_24h },
+      { k: 'Time since last txn',      v: ctx.time_since_last_txn_secs < 0 ? 'First txn' : fmtSecs(ctx.time_since_last_txn_secs), warn: ctx.time_since_last_txn_secs >= 0 && ctx.time_since_last_txn_secs < 60 },
+      { k: 'Unique merchants seen',    v: ctx.unique_merchants_seen },
+      { k: 'Miles from home',          v: ctx.miles_from_home + ' mi',    warn: ctx.miles_from_home > 200 },
+      { k: 'Weekend transaction',      v: ctx.derived_is_weekend ? 'Yes' : 'No', bool: true, boolVal: ctx.derived_is_weekend },
+      { k: 'Night transaction',        v: ctx.derived_is_night_txn ? 'Yes' : 'No', bool: true, boolVal: ctx.derived_is_night_txn },
+      { k: 'Income proxy',             v: '$' + ctx.derived_income_proxy },
+      { k: 'Age (derived)',            v: ctx.derived_age + ' yrs' },
+      { k: 'Job title matched',        v: ctx.job_lookup_hit ? 'Yes' : 'No', bool: true, boolVal: ctx.job_lookup_hit },
+      { k: 'DOB provided',             v: ctx.dob_provided ? 'Yes' : 'No', bool: true, boolVal: ctx.dob_provided },
+    ];
+    document.getElementById('ctx-list').innerHTML = ctxRows.map(r => {
+      let cls = '';
+      if (r.bool) cls = r.boolVal ? 'true' : 'false';
+      else if (r.warn) cls = 'warn';
+      return `<div class="ctx-row"><span class="ctx-key">${r.k}</span><span class="ctx-val ${cls}">${r.v}</span></div>`;
+    }).join('');
+    document.getElementById('context-panel').classList.add('visible');
+
+    // raw json
+    document.getElementById('raw-json').textContent = JSON.stringify(d, null, 2);
+    document.getElementById('raw-panel').classList.add('visible');
+  }
+
+  function fmtSecs(s) {
+    if (s < 60)   return s.toFixed(0) + 's ago';
+    if (s < 3600) return (s / 60).toFixed(0) + 'm ago';
+    return (s / 3600).toFixed(1) + 'h ago';
+  }
+
+  // allow Enter in inputs
+  document.querySelectorAll('input').forEach(el =>
+    el.addEventListener('keydown', e => e.key === 'Enter' && submitPrediction()));
+</script>
+</body>
+</html>
