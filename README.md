@@ -1,6 +1,11 @@
 # Credit Card Fraud Detection
 
-A machine learning system to detect fraudulent credit card transactions using the [Kaggle Fraud Detection Dataset](https://www.kaggle.com/datasets/kartik2112/fraud-detection) a synthetic dataset simulating ~1,000 cardholders with realistic, heavily imbalanced transaction data.
+A machine learning system to detect fraudulent credit card transactions using the [Kaggle Fraud Detection Dataset](https://www.kaggle.com/datasets/kartik2112/fraud-detection) a synthetic dataset simulating ~1,000 cardholders with realistic, heavily imbalanced transaction data. This project implements a production-style fraud detection system with:
+  • Real-time transaction scoring
+  • Behavioral cardholder profiling
+  • FastAPI that deploys the model 
+  • Custom frontend dashboard
+  • 3-tier fraud decision engine (approve/review/block)
 
 ---
 
