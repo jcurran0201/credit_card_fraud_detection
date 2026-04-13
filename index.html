@@ -779,10 +779,9 @@
     // stats
     const fi = d.financial_impact;
     const statsHtml = [
-      { label: 'Transaction',    val: '$' + fi.transaction_amount.toFixed(2) },
-      { label: 'Fraud Caught',   val: '$' + fi.fraud_caught_saved.toFixed(2), hi: fi.fraud_caught_saved > 0 },
-      { label: 'Fraud Missed',   val: '$' + fi.fraud_missed_lost.toFixed(2),  warn: fi.fraud_missed_lost > 0 },
-      { label: 'Legit Blocked',  val: '$' + fi.legitimate_blocked.toFixed(2), warn: fi.legitimate_blocked > 0 },
+      { label: 'Transaction',        val: '$' + fi.transaction_amount.toFixed(2) },
+      { label: 'Fraud Caught',       val: '$' + fi.fraud_caught_saved.toFixed(2), hi: fi.fraud_caught_saved > 0 },
+      { label: 'Flagged for Review', val: '$' + fi.flagged_for_review.toFixed(2), warn: fi.flagged_for_review > 0 },
     ].map(s => `
       <div class="stat-cell">
         <div class="stat-label">${s.label}</div>
