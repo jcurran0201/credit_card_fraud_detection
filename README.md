@@ -11,6 +11,7 @@ This project implements a production-style fraud detection system with:
 - **FastAPI REST API**
 - **Custom frontend dashboard**
 - **3-tier fraud decision engine (approve/review/block)**
+- **Cloud deployment via Docker + AWS ECS Fargate**
 
 ---
 
@@ -62,13 +63,13 @@ RF Tuned was selected for deployment because it catches the most raw fraud value
 
 ---
 
-## Deployment
+## Local Deployment
 
 A **FastAPI backend & HTML frontend** for real-time fraud scoring, serving the tuned Random Forest model via REST API.
 
 ### Setup
 
-**1. Place your data files** — put `fraudTrain.csv` and `fraudTest.csv` in the same directory as `main.py`.
+**1. Place your data files** — put `fraudTrain.csv` and `fraudTest.csv` in the same directory as `Deployment_code.py`.
 
 **2. Install dependencies**
 ```bash
@@ -81,6 +82,28 @@ uvicorn Deployment_code:app --reload --host 0.0.0.0 --port 8000
 ```
 
 **4. Open the frontend** — open `index.html` in your browser. It connects to `http://localhost:8000` by default.
+
+---
+
+## Cloud Deployment
+
+The API has been deployed to AWS using Docker and ECS Fargate. The endpoint is taken down when not in use to avoid ongoing costs — screenshots of the live deployment are included in this repository.
+
+**Stack:**
+- Docker (multi-stage build, linux/amd64)
+- Amazon ECR (private image registry)
+- Amazon ECS Fargate (serverless container hosting)
+- Application Load Balancer (public HTTP endpoint)
+- CloudWatch (logging)
+
+**To redeploy:**
+```bash
+docker buildx build --platform linux/amd64 -t fraud-api:latest .
+docker push 726521662008.dkr.ecr.us-east-1.amazonaws.com/fraud-api:latest
+aws ecs update-service --cluster fraud-api-cluster --service fraud-api-service --desired-count 1 --force-new-deployment --region us-east-1
+```
+
+See `Complete_Deployment_Lesson.docx` for the full deployment walkthrough including every error encountered and resolved.
 
 ---
 
@@ -117,3 +140,6 @@ uvicorn Deployment_code:app --reload --host 0.0.0.0 --port 8000
 
 - Systematic probability threshold search (0.9–1.0 range) instead of manual tuning
 - Persist card behavioral profiles across server restarts
+- Cold-start problem handling for new cards with no behavioral history
+- Model drift monitoring
+- Threshold selection via cost-matrix optimization rather than manual tuning
