@@ -103,7 +103,11 @@ docker push 726521662008.dkr.ecr.us-east-1.amazonaws.com/fraud-api:latest
 aws ecs update-service --cluster fraud-api-cluster --service fraud-api-service --desired-count 1 --force-new-deployment --region us-east-1
 ```
 
-See `Complete_Deployment_Lesson.docx` for the full deployment walkthrough including every error encountered and resolved.
+**Live API:** http://fraud-api-alb-1772516990.us-east-1.elb.amazonaws.com
+
+**Interactive docs:** http://fraud-api-alb-1772516990.us-east-1.elb.amazonaws.com/docs
+
+**Health check:** http://fraud-api-alb-1772516990.us-east-1.elb.amazonaws.com/health
 
 ---
 
