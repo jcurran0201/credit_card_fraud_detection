@@ -99,7 +99,7 @@ The API has been deployed to AWS using Docker and ECS Fargate. The endpoint is t
 **To redeploy:**
 ```bash
 docker buildx build --platform linux/amd64 -t fraud-api:latest .
-docker push 726521662008.dkr.ecr.us-east-1.amazonaws.com/fraud-api:latest
+docker push YOUR_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/fraud-api:latest
 aws ecs update-service --cluster fraud-api-cluster --service fraud-api-service --desired-count 1 --force-new-deployment --region us-east-1
 ```
 
