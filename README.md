@@ -61,27 +61,6 @@ RF Tuned was selected for deployment because it catches the most raw fraud value
 - Top fraudulent merchants: **Kozey-Boehm, Kuhic LLC, Terry-Huel, Boyer PLC**
 - Most important features: transaction amount, 24-hour spend total, off-peak flag, weekly card activity
 
----
-
-## Local Deployment
-
-A **FastAPI backend & HTML frontend** for real-time fraud scoring, serving the tuned Random Forest model via REST API.
-
-### Setup
-
-**1. Place your data files** — put `fraudTrain.csv` and `fraudTest.csv` in the same directory as `Deployment_code.py`.
-
-**2. Install dependencies**
-```bash
-pip install -r requirements.txt
-```
-
-**3. Start the API**
-```bash
-uvicorn Deployment_code:app --reload --host 0.0.0.0 --port 8000
-```
-
-**4. Open the frontend** — open `index.html` in your browser. It connects to `http://localhost:8000` by default.
 
 ---
 
