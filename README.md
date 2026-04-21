@@ -92,15 +92,25 @@ aws ecs update-service --cluster fraud-api-cluster --service fraud-api-service -
 
 '{
     "cc_num": "4532015112830366",
+    
     "amt": 284.50,
+    
     "merchant": "electronics_plus",
+    
     "state": "TX",
+    
     "merch_lat": 30.2672,
+    
     "merch_long": -97.7431,
+    
     "lat": 29.7604,
+    
     "long": -95.3698,
+    
     "job": "Software Engineer",
+    
     "dob": "1988-03-14",
+    
     "trans_timestamp": "2026-04-20T02:15:00Z"
   }'
 
