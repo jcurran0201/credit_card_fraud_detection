@@ -89,6 +89,7 @@ aws ecs update-service --cluster fraud-api-cluster --service fraud-api-service -
 **Health check:** http://fraud-api-alb-1772516990.us-east-1.elb.amazonaws.com/health
 
 **Try it, here is an example** 
+
 '{
     "cc_num": "4532015112830366",
     "amt": 284.50,
