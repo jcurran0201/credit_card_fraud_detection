@@ -90,8 +90,7 @@ aws ecs update-service --cluster fraud-api-cluster --service fraud-api-service -
 
 **Try it, here is an example** 
 
-'{
-    "cc_num": "4532015112830366",
+'{"cc_num": "4532015112830366",
     
     "amt": 284.50,
     
