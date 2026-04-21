@@ -75,7 +75,7 @@ The API has been deployed to AWS using Docker and ECS Fargate. The endpoint is t
 - Application Load Balancer (public HTTP endpoint)
 - CloudWatch (logging)
 
-**To redeploy:**
+**To deploy:**
 ```bash
 docker buildx build --platform linux/amd64 -t fraud-api:latest .
 docker push YOUR_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/fraud-api:latest
