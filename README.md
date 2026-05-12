@@ -38,7 +38,7 @@ This project implements a production-style fraud detection system with:
 | XGBoost + Tuning | 0.66 | 0.77 | 0.71 | 0.80 |
 
 Class imbalance was handled via class weighting and threshold tuning rather than SMOTE in order to preserve natural transaction patterns.
-
+A/B testing was not performed becasue the data used in this project was static. A/B testing is typically done with live data
 ---
 
 ## Financial Impact Comparison
