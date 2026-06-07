@@ -90,20 +90,7 @@ aws ecs update-service --cluster fraud-api-cluster --service fraud-api-service -
 
 **Health check:** http://fraud-api-alb-1772516990.us-east-1.elb.amazonaws.com/health
 
-**Try it, here is an example** 
-
-'{"cc_num": "4532015112830366",
-    "amt": 284.50,
-    "merchant": "electronics_plus",
-    "state": "TX",
-    "merch_lat": 30.2672,
-    "merch_long": -97.7431,
-    "lat": 29.7604,
-    "long": -95.3698,
-    "job": "Software Engineer",
-    "dob": "1988-03-14",
-    "trans_timestamp": "2026-04-20T02:15:00Z"
-  }'
+Due to the cost of running the API on AWS, I did have to take the project down, but I provided screenshots to support the Live API, Health Check, and an example of the API working effectively. 
 
 ---
 
